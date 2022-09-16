@@ -1,0 +1,11 @@
+@import "mixin";
+
+$fontsNotoSans:
+        'NotoSans-Light' 300,
+        'NotoSans-Regular' 400,
+        'NotoSans-SemiBold' 600,
+        'NotoSans-Bold' 700;
+
+@each $name, $weight in $fontsNotoSans {
+  @include font-face('NotoSans', $weight, $name);
+}

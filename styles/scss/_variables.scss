@@ -1,0 +1,48 @@
+// stylelint-disable scss/dollar-variable-empty-line-before
+
+// COLORS
+$color-white: #fff;
+$color-gray-text: #888888;
+$color-gray: #262626;
+$color-background: #0F0E10;
+$color-yellow: #FFB800;
+
+// PATHES
+$IMG_PATH: '/images';
+
+
+// GRADIENT
+//$gradient-green: transparent linear-gradient(90deg, #31c1a6 0%, #1e938d 100%) 0% 0% no-repeat padding-box;
+//$gradient-black: radial-gradient(80.35% 104.45% at 76.87% 41.73%, #3D3B3B 0%, #121212 100%);
+
+// FONTS
+// stylelint-disable-next-line,
+$font-primary: "PlayfairDisplay", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, oxygen, ubuntu, cantarell, "Open Sans", "Helvetica Neue", serif;
+
+// EASING TRANSITIONS
+$duration-normal: 0.4s;
+$easing-back-out: cubic-bezier(0.25, 0.74, 0.22, 1.1); // http://cubic-bezier.com/#.25,.74,.22,1.1
+$easing-back-in: cubic-bezier(0.47, -0.1, 0.5, -0.06); // http://cubic-bezier.com/#.47,-0.1,.5,-.06
+$easing-out: ease-out;
+$easing-in: ease-in;
+
+// vieport width
+$desk: 768px;
+
+// without scroll for margin-right
+$without-scroll-width: calc(-1 * (100vw - 100%));
+
+// Breakpoints
+$xs: 0;
+$sm: 576px;
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;
+$xxl: 1400px;
+
+// Containers
+$sm-c: 540px;
+$md-c: 720px;
+$lg-c: 960px;
+$xl-c: 1140px;
+$xxl-c: 1320px;

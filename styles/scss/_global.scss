@@ -1,0 +1,41 @@
+html {
+  box-sizing: border-box;
+}
+
+html, body { scroll-behavior: smooth; }
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  background-color: $color-background;
+  font-family: $font-primary;
+  font-size: 16px;
+  line-height: normal;
+  color: $color-white;
+  overflow-x: hidden;
+
+  &.modal-active {
+    margin-right: $without-scroll-width;
+    //padding-right: 15px;
+  }
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}

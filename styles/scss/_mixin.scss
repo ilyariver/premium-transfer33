@@ -1,0 +1,27 @@
+@import "root-path";
+
+@font-face {
+  font-family: PlayfairDisplay;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src:
+          local(PlayfairDisplay-Regular),
+          url('#{$root-path}/fonts/PlayfairDisplay-Regular.woff2') format('woff2'),
+          url('#{$root-path}/fonts/PlayfairDisplay-Regular.woff') format('woff');
+}
+
+@mixin font-face($font-family, $font-weight, $font) {
+  @font-face {
+    font-family: $font-family;
+    font-style: normal;
+    font-weight: $font-weight;
+    font-display: swap;
+    src:
+            local($font),
+            url('#{$root-path}/fonts/#{$font}.woff2') format('woff2'),
+            url('#{$root-path}/fonts/#{$font}.woff') format('woff');
+  }
+}
+
+
