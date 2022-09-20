@@ -1,0 +1,14 @@
+@import '../../../../../styles/scss/variables';
+@import '../../../../../styles/scss/breakpoint';
+@import '../../../../../styles/scss/shared/helper';
+
+.section {
+  margin-bottom: 85px;
+}
+
+.title {
+  margin: 60px;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 32px;
+}

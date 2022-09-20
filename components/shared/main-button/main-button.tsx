@@ -5,7 +5,7 @@ import { ButtonTypes } from '../../../types/button'
 
 const MainButton: FC<ButtonTypes> = ({text, className}) => {
     return (
-        <button className={`${className} ${style.button}`}>
+        <button className={`${style.button} ${className}`}>
             { text || 'Текст' }
         </button>
     )

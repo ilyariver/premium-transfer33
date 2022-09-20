@@ -1,0 +1,40 @@
+@import '../../../styles/scss/variables';
+@import '../../../styles/scss/breakpoint';
+@import '../../../styles/scss/shared/helper';
+
+.appeal {
+  &_title {
+    margin-bottom: 25px;
+    font-size: 28px;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  &_text {
+    margin-bottom: 44px;
+    font-size: 20px;
+    text-align: center;
+  }
+}
+
+.button_group {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 350px;
+}
+
+.button {
+  background-color: transparent;
+  padding: 0 40px;
+  border-radius: 10px;
+  border: 1px solid $color-white!important;
+  color: $color-white;
+  transition: all 0.2s ease-out;
+
+  &:hover {
+    background-color: $color-white;
+    border: 1px solid transparent;
+    color: $color-background;
+    box-shadow: 0 0 20px 0 $color-white;
+  }
+}

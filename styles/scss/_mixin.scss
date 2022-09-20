@@ -11,6 +11,17 @@
           url('#{$root-path}/fonts/PlayfairDisplay-Regular.woff') format('woff');
 }
 
+@font-face {
+  font-family: PlayfairDisplay;
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src:
+          local(PlayfairDisplay-Regular),
+          url('#{$root-path}/fonts/PlayfairDisplay-Bold.woff2') format('woff2'),
+          url('#{$root-path}/fonts/PlayfairDisplay-Bold.woff') format('woff');
+}
+
 @mixin font-face($font-family, $font-weight, $font) {
   @font-face {
     font-family: $font-family;

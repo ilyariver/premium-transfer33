@@ -1,0 +1,79 @@
+@import '../../../../styles/scss/variables';
+@import '../../../../styles/scss/breakpoint';
+@import '../../../../styles/scss/shared/helper';
+
+.section {
+  padding: 160px 0 100px;
+}
+
+.title {
+  margin-bottom: 100px;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 28px;
+}
+
+.description {
+  margin-bottom: 50px;
+  font-size: 28px;
+  @include secondaryFont();
+  font-weight: 700;
+
+  span {
+    @include primaryFont();
+    text-transform: uppercase;
+    color: $color-yellow;
+  }
+}
+
+.director_info {
+  margin-bottom: 120px;
+  padding: 30px 65px;
+  border: 2px solid $color-yellow;
+  @include secondaryFont();
+}
+
+.director_name {
+  margin-bottom: 20px;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 38px;
+}
+
+.achievements {
+  width: 400px;
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+.mission_wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 120px;
+}
+
+.mission {
+  width: 800px;
+  @include secondaryFont();
+  font-size: 20px;
+  line-height: 1.6;
+}
+
+.number_orders {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  @include secondaryFont();
+}
+
+.number {
+  font-weight: 700;
+  font-size: 64px;
+  color: $color-yellow;
+}
+
+.orders_text {
+  text-align: start;
+  line-height: 1.5;
+}

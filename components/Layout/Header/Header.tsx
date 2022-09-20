@@ -1,7 +1,14 @@
+import { FC } from 'react'
 import style from './Header.module.scss'
 import Link from 'next/link'
 
-const Header = () => {
+interface HeaderTypes {
+    activePage?: string
+}
+
+const Header: FC<HeaderTypes> = ({activePage}) => {
+
+
     return (
         <header className={style.header}>
             <div className="container">
@@ -13,8 +20,8 @@ const Header = () => {
                                 <div>+7 999 999 99 99</div>
                             </a>
                         </Link>
-                        <Link href="#" className={style.page_link}>
-                            <a className={style.link}>
+                        <Link href="/autopark" className={style.page_link}>
+                            <a className={`${style.link} ${activePage === 'Автопарк' ? style.active : ''}`}>
                                 Автопарк
                             </a>
                         </Link>
@@ -25,13 +32,13 @@ const Header = () => {
                         </a>
                     </Link>
                     <div className={style.pages}>
-                        <Link href="#" className={style.page_link}>
-                            <a className={style.link}>
+                        <Link href="/contacts" className={style.page_link}>
+                            <a className={`${style.link} ${activePage === 'Контакты' ? style.active : ''}`}>
                                 Контакты
                             </a>
                         </Link>
-                        <Link href="#" className={style.page_link}>
-                            <a className={style.link}>
+                        <Link href="/about" className={style.page_link}>
+                            <a className={`${style.link} ${activePage === 'О компании' ? style.active : ''}`}>
                                 О компании
                             </a>
                         </Link>

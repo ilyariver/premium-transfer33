@@ -1,0 +1,31 @@
+@import '../../../../../styles/scss/variables';
+@import '../../../../../styles/scss/breakpoint';
+@import '../../../../../styles/scss/shared/helper';
+
+.section {
+  margin-bottom: 125px;
+}
+
+.title {
+  margin-bottom: 80px;
+  font-size: 35px;
+  text-transform: uppercase;
+}
+
+.list {
+  padding: 0 200px;
+}
+
+.item {
+  &:not(:last-child) {
+    margin-bottom: 30px;
+  }
+}
+
+.text {
+  padding-left: 30px;
+  font-family: 'NotoSans', sans-serif;
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 1.5;
+}

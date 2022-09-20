@@ -1,0 +1,42 @@
+@import '../../../styles/scss/variables';
+@import '../../../styles/scss/breakpoint';
+@import '../../../styles/scss/shared/helper';
+
+.list {
+  display: flex;
+}
+
+.item {
+  position: relative;
+  text-transform: uppercase;
+  font-family: NotoSans, sans-serif;
+  font-weight: 500;
+
+  &:not(:last-child) {
+    margin-right: 35px;
+
+    &:after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: -23px;
+      transform: translateY(-30%);
+      @include backgroundImg('icons/triangle.svg', contain);
+      width: 8px;
+      height: 8px;
+    }
+  }
+}
+
+.link {
+  text-decoration: underline;
+
+  &:hover {
+    color: #fff6da;
+  }
+}
+
+.page {
+  color: $color-yellow;
+}
+

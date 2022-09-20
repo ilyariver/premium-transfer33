@@ -1,0 +1,74 @@
+@import '../../../../../styles/scss/variables';
+@import '../../../../../styles/scss/breakpoint';
+
+.section_benefits {
+  margin-bottom: 50px;
+}
+
+.main_title {
+  font-size: 42px;
+  text-align: center;
+
+  strong {
+    color: $color-yellow;
+    text-transform: uppercase;
+  }
+}
+
+.item {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.img {
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 700px;
+  height: 650px;
+}
+
+.link {
+  position: absolute;
+  bottom: 60px;
+
+  &_1 {
+    left: 120px;
+  }
+
+  &_2 {
+    right: 50px;
+  }
+}
+
+.description {
+  position: relative;
+}
+
+.index {
+  position: absolute;
+  color: #272627;
+  font-weight: 700;
+  font-size: 450px;
+
+  &_right {
+    bottom: -170px;
+    right: 40%;
+  }
+
+  &_left {
+    top: -350px;
+    left: 20%;
+  }
+}
+
+.text {
+  position: relative;
+  font-size: 40px;
+  z-index: 1;
+
+  &_left {
+    text-align: right;
+  }
+}

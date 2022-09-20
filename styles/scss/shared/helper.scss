@@ -1,0 +1,26 @@
+@import "styles/scss/variables";
+
+@mixin position($number) {
+  left: $number;
+  transform: translateX(-#{$number});
+}
+
+@mixin backgroundImg($img, $size) {
+  background-image: url('#{$IMG_PATH}/#{$img}');
+  @include background($size);
+
+}
+
+@mixin background($size) {
+  background-repeat: no-repeat;
+  background-size: $size;
+}
+
+@mixin primaryFont() {
+  font-family: PlayfairDisplay, serif;
+}
+
+@mixin secondaryFont() {
+  font-family: NotoSans, sans-serif;
+}
+

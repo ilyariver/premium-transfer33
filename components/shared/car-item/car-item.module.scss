@@ -1,0 +1,59 @@
+@import '../../../styles/scss/variables';
+@import '../../../styles/scss/breakpoint';
+@import '../../../styles/scss/shared/helper';
+
+.list {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 0 100px;
+}
+
+.item {
+  position: relative;
+  width: calc(100% / 2 - 20px);
+  margin-bottom: 40px;
+}
+
+.img {
+  width: 100%;
+  transition: all 0.3s ease-in;
+  font-size: 0;
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('#{$IMG_PATH}/pattern.png');
+    opacity: 0.3;
+  }
+
+  &:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 0 5px $color-white;
+
+    & .name {
+      text-shadow: 0 0 15px $color-yellow;
+    }
+  }
+
+  span {
+    width: 100%!important;
+  }
+}
+
+.name {
+  position: absolute;
+  display: block;
+  @include position(50%);
+  bottom: 20px;
+  text-align: center;
+  font-size: 25px;
+  font-family: NotoSans, serif;
+  z-index: 2;
+  transition: text-shadow 0.2s ease-in;
+  text-shadow: 0 0 5px $color-background;
+}
