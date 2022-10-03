@@ -1,30 +1,26 @@
 import { FC } from 'react'
+import { Address, Contacts } from '../../../../types/contacts'
 import style from './contacts-info-page.module.scss'
 import Link from 'next/link'
-import { ContactsPage } from '../../../../types/contacts'
-import Breadcrumbs from '../../../shared/breadcrumbs/breadcrumbs'
+
 
 interface ContactsTypes {
-	contactsPage: ContactsPage
+	contacts: Contacts[]
+	address: Address
 }
 
-const ContactsInfoPage: FC<ContactsTypes> = ({ contactsPage }) => {
-	if (!contactsPage) return null
-	const { title, pageTitle, contacts, address } = contactsPage
+const ContactsInfoPage: FC<ContactsTypes> = ({ contacts, address }) => {
+	if (!contacts) return null
 
 	return (
-		<section className={style.section}>
+		<>
 			<div className="container">
-				<Breadcrumbs pagesName={[title]} className={style.breadcrumbs}/>
-				<h1 className={style.title}>
-					{ pageTitle }
-				</h1>
 				<div className={style.contacts}>
 					<ul className={style.list}>
 						{
 							contacts.map((contact) => {
 								return (
-									<li key={contact.id}>
+									<li key={contact.id} className={style.list_item}>
 										<Link href={contact.phone.link}>
 											<a className={style.item}>
 												<div className={style.title_content}>
@@ -32,7 +28,8 @@ const ContactsInfoPage: FC<ContactsTypes> = ({ contactsPage }) => {
 														className={style.icon}
 														aria-label={'иконка ' + contact.type}
 														style={{backgroundImage: `url(${contact.icon})`}}
-													> </div>
+													>
+													</div>
 													<div className={style.type}>{contact.type}</div>
 												</div>
 												<div className={style.text}>{contact.phone.tel}</div>
@@ -44,7 +41,7 @@ const ContactsInfoPage: FC<ContactsTypes> = ({ contactsPage }) => {
 						}
 					</ul>
 				</div>
-				<div className={style.address_title}>Адрес</div>
+				<div className={style.address_title}><span>Адрес</span></div>
 				<div className={style.wrap}>
 					<div className={style.address_content}>
 						<div className={style.address_icon}
@@ -64,7 +61,7 @@ const ContactsInfoPage: FC<ContactsTypes> = ({ contactsPage }) => {
 							frameBorder="3" allowFullScreen={true} style={{position:'relative', border: 'none', filter: 'brightness(0.8)'}}> </iframe>
 				</div>
 			</div>
-		</section>
+		</>
 	)
 }
 

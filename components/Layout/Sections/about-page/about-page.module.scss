@@ -2,16 +2,6 @@
 @import '../../../../styles/scss/breakpoint';
 @import '../../../../styles/scss/shared/helper';
 
-.section {
-  padding: 160px 0 100px;
-}
-
-.title {
-  margin-bottom: 100px;
-  text-align: center;
-  text-transform: uppercase;
-  font-size: 28px;
-}
 
 .description {
   margin-bottom: 50px;
@@ -19,10 +9,19 @@
   @include secondaryFont();
   font-weight: 700;
 
-  span {
-    @include primaryFont();
-    text-transform: uppercase;
-    color: $color-yellow;
+  @include small {
+    margin-bottom: 40px;
+    font-size: 26px;
+  }
+
+  @include x-small {
+    font-size: 24px;
+    line-height: 1.5;
+  }
+
+  @include xx-small {
+    font-size: 20px;
+    line-height: 1.3;
   }
 }
 
@@ -31,6 +30,19 @@
   padding: 30px 65px;
   border: 2px solid $color-yellow;
   @include secondaryFont();
+
+  @include large {
+    margin-bottom: 70px;
+  }
+
+  @include small {
+    margin-bottom: 20px;
+    padding: 30px 50px;
+  }
+
+  @include xx-small {
+    padding: 30px 20px;
+  }
 }
 
 .director_name {
@@ -38,19 +50,52 @@
   font-size: 28px;
   font-weight: 700;
   line-height: 38px;
+
+  @include small {
+    margin-bottom: 40px;
+    font-size: 29px;
+    line-height: 1.2;
+  }
+
+  @include xx-small {
+    margin-bottom: 30px;
+    font-size: 30px;
+  }
 }
 
 .achievements {
   width: 400px;
   font-weight: 300;
   line-height: 1.5;
+
+  @include x-small {
+    width: 100%;
+  }
+
+  & > * {
+    @include small {
+      font-size: 16px;
+    }
+
+    @include x-small {
+      font-size: 15px;
+    }
+
+    @include xx-small {
+      font-size: 14px;
+    }
+  }
 }
 
 .mission_wrap {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 120px;
+
+  @include small {
+    align-items: start;
+    flex-direction: column-reverse;
+  }
 }
 
 .mission {
@@ -58,6 +103,25 @@
   @include secondaryFont();
   font-size: 20px;
   line-height: 1.6;
+
+  @include large {
+    margin-right: 50px;
+    width: 100%;
+    font-size: 17px;
+  }
+
+  & > * {
+    @include small {
+      font-size: 15px;
+      line-height: 1.65;
+    }
+
+    @include x-small {
+      font-size: 13px;
+      line-height: 1.75;
+    }
+  }
+
 }
 
 .number_orders {
@@ -65,15 +129,44 @@
   flex-direction: column;
   align-items: flex-start;
   @include secondaryFont();
+
+  @include small {
+    margin-bottom: 20px;
+    flex-direction: row;
+    align-items: center;
+  }
 }
 
 .number {
   font-weight: 700;
   font-size: 64px;
   color: $color-yellow;
+
+  @include small {
+    margin-right: 30px;
+    font-size: 85px;
+  }
+
+  @include x-small {
+    margin-right: 20px;
+    font-size: 65px;
+  }
+
+  @include xx-small {
+    margin-right: 10px;
+    font-size: 75px;
+  }
 }
 
 .orders_text {
   text-align: start;
   line-height: 1.5;
+
+  @include small {
+    font-size: 14px;
+  }
+
+  @include xx-small {
+    font-size: 11px;
+  }
 }

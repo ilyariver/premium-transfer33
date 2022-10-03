@@ -1,4 +1,5 @@
 export interface BreadcrumbsTypes {
-	pagesName: string[]
+	pagesName?: string[]
 	className: string
+	parentLink: string
 }

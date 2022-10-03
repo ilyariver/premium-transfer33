@@ -1,0 +1,23 @@
+@import '../../../styles/scss/variables';
+@import '../../../styles/scss/breakpoint';
+@import '../../../styles/scss/shared/helper';
+
+.section {
+  padding: 160px 0 0;
+
+  @include large {
+    padding-top: 110px;
+  }
+
+  @include tablets {
+    padding-top: 30px;
+  }
+}
+
+.breadcrumbs {
+  margin-bottom: 70px;
+
+  @include large {
+    margin-bottom: 50px;
+  }
+}

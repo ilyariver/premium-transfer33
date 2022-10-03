@@ -4,6 +4,7 @@
 
 .list {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .item {
@@ -11,6 +12,14 @@
   text-transform: uppercase;
   font-family: NotoSans, sans-serif;
   font-weight: 500;
+
+  @include large {
+    font-size: 12px;
+  }
+
+  @include x-small {
+    font-size: 10px;
+  }
 
   &:not(:last-child) {
     margin-right: 35px;
@@ -24,19 +33,26 @@
       @include backgroundImg('icons/triangle.svg', contain);
       width: 8px;
       height: 8px;
+
+      @include x-small {
+        width: 5px;
+        height: 5px;
+      }
     }
   }
 }
 
 .link {
   text-decoration: underline;
+  text-shadow: 0 0 5px black;
 
   &:hover {
-    color: #fff6da;
+    color: $color-yellow;
   }
 }
 
 .page {
   color: $color-yellow;
+  text-shadow: 0 0 5px black;
 }
 

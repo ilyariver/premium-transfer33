@@ -3,7 +3,25 @@
 @import '../../../../../styles/scss/shared/helper';
 
 .section {
-  margin-bottom: 90px;
+  position: relative;
+  padding: 100px 0;
+  background-color: $color-light-background;
+
+  @include x-large {
+    padding: 50px 0 70px;
+  }
+
+  @include tablets {
+    padding: 30px 0 50px;
+  }
+
+  &:after {
+    @include sectionDie(70, top, 20);
+  }
+
+  &:before {
+    @include sectionDie(70, bottom, 20);
+  }
 }
 
 .title {
@@ -11,8 +29,27 @@
   font-size: 44px;
   text-transform: uppercase;
 
-  span {
+  @include x-large {
+    margin-bottom: 70px;
+    font-size: 35px;
+  }
+
+  @include large {
+    margin-bottom: 50px;
+    font-size: 25px;
+  }
+
+  @include x-small {
+    font-size: 20px;
+  }
+
+  span span {
     color: $color-yellow;
+  }
+
+  span {
+    position: relative;
+    @include yellowLineUnderTitle();
   }
 }
 
@@ -20,14 +57,38 @@
   position: relative;
   display: flex;
   justify-content: space-between;
+
+  @include tablets {
+    flex-direction: column;
+  }
+}
+
+.container {
+  @include large {
+    padding: 0!important;
+  }
 }
 
 .img {
   position: relative;
   margin-right: 30px;
   min-width: 50%;
+  height: 100%;
   background-repeat: no-repeat;
   background-size: cover;
+
+  @include large {
+    margin: 0;
+  }
+
+  @include tablets {
+    height: 250px;
+  }
+
+  @include x-small {
+    margin-bottom: 60px;
+    height: 150px;
+  }
 
   &:after {
     content: "";
@@ -41,12 +102,26 @@
   }
 }
 
+.list {
+  @include tablets {
+    padding-right: 30%;
+  }
+
+  @include small {
+    padding: 0;
+  }
+}
+
 .item {
   display: flex;
   align-items: flex-start;
 
   &:not(:last-child) {
     margin-bottom: 10px;
+
+    @include tablets {
+      margin-bottom: 15px;
+    }
   }
 }
 
@@ -63,4 +138,17 @@
 .text {
   font-family: 'NotoSans', sans-serif;
   font-weight: 300;
+  font-size: 20px;
+
+  @include x-large {
+    font-size: 17px;
+  }
+
+  @include large {
+    font-size: 14px;
+  }
+
+  @include tablets {
+    line-height: 1.5;
+  }
 }

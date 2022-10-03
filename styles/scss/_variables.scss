@@ -2,9 +2,12 @@
 
 // COLORS
 $color-white: #fff;
+$color-top: #8b8b8b1f;
 $color-gray-text: #888888;
 $color-gray: #262626;
-$color-background: #0F0E10;
+$color-extra-light-background: #292929;
+$color-background: #000000;
+$color-light-background: #0F0E10;
 $color-yellow: #FFB800;
 $color-scroll-line: #050505;
 $color-slider: #252525;
@@ -19,7 +22,7 @@ $IMG_PATH: '/images';
 
 // FONTS
 // stylelint-disable-next-line,
-$font-primary: "PlayfairDisplay", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, oxygen, ubuntu, cantarell, "Open Sans", "Helvetica Neue", serif;
+$font-primary: PlayfairDisplay, serif;
 
 // EASING TRANSITIONS
 $duration-normal: 0.4s;

@@ -6,24 +6,72 @@
   padding: 115px;
   border-top: 1px solid rgba(255, 255, 255, 0.3);
   font-family: NotoSans, sans-serif;
+
+  @include x-large {
+    padding: 70px;
+  }
+
+  @include small {
+    padding: 70px 40px;
+  }
+
+  @include x-small {
+    padding: 110px 0;
+  }
 }
 
 .wrap {
   padding: 0 200px;
+
+  @include xx-large {
+    padding: 0 150px;
+  }
+
+  @include x-large {
+    padding: 0 100px;
+  }
+
+  @include large {
+    padding: 0;
+  }
+
+  @include tablets {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row-reverse;
+  }
+
+  @include small {
+    justify-content: space-between;
+  }
 }
 
 .nav {
   margin-bottom: 70px;
+
+  @include tablets {
+    margin-bottom: 0;
+  }
 }
 
 .list {
   display: flex;
   justify-content: space-between;
+
+  @include tablets {
+    height: 100%;
+    flex-direction: column;
+  }
 }
 
 .item {
   text-transform: uppercase;
   font-weight: 700;
+
+  @include x-small {
+    font-size: 14px;
+    text-align: end;
+  }
 }
 
 .link {
@@ -50,29 +98,61 @@
     background-color: $color-yellow;
     transition: width .3s ease-in-out;
   }
+
+  @include tablets {
+    cursor: auto;
+    &:after {
+      content: normal;
+    }
+
+    &:hover:after {
+      content: normal;
+    }
+  }
 }
 
 .text {
   font-weight: 300;
+
+  @include xx-large {
+    font-size: 14px;
+  }
+
+  @include x-small {
+    font-size: 12px;
+  }
 }
 
 .content {
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @include tablets {
+    display: block;
+  }
 }
 
 .contacts {
   margin-left: 100px;
   width: 40%;
+
+  @include tablets {
+    margin-left: 0;
+    width: auto;
+  }
+}
+
+.contacts_wrap {
+  margin-bottom: 20px;
+
+  @include xx-large {
+    margin-bottom: 15px;
+  }
 }
 
 .point {
   display: flex;
-
-  &:not(:last-child) {
-    margin-bottom: 15px;
-  }
 
   &:hover .text {
     color: #888888;
@@ -91,6 +171,14 @@
   min-width: 25px;
   min-height: 25px;
   transition: transform 0.2s ease-out;
+
+  @include x-small {
+    margin-right: 10px;
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
+    min-height: 20px;
+  }
 }
 
 .text {
@@ -99,19 +187,57 @@
 
 .logo {
   display: inline-block;
-  @include background(cover);
+  @include background(contain);
   width: 310px;
   height: 40px;
   transition: all 0.2s ease-out;
   border-radius: 5px;
 
+  @include x-large {
+    width: 230px;
+    height: 30px;
+  }
+
+  @include x-small {
+    width: 190px;
+    height: 25px;
+  }
+
+  &_link {
+    font-size: 0;
+
+    @include tablets {
+      display: inline-block;
+      margin-bottom: 50px;
+      cursor: auto;
+    }
+
+    @include x-small {
+      margin-bottom: 30px;
+    }
+  }
+
   &:hover {
     transform: scale(1.03);
     box-shadow: 0 0 20px 0 #FFFFFF7C;
+
+    @include tablets {
+      transform: scale(1);
+      box-shadow: none;
+    }
   }
 }
 
 .copyright {
   color: #888888;
+
+  @include tablets {
+    margin-top: 20px;
+    display: inline-block;
+  }
+
+  @include x-small {
+    margin-top: 10px;
+  }
 }
 

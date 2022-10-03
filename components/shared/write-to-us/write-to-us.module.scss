@@ -2,39 +2,128 @@
 @import '../../../styles/scss/breakpoint';
 @import '../../../styles/scss/shared/helper';
 
+
+.section {
+  padding: 100px 0 100px;
+
+  @include tablets {
+    padding: 80px 0;
+  }
+}
+
 .appeal {
   &_title {
     margin-bottom: 25px;
     font-size: 28px;
     text-transform: uppercase;
     text-align: center;
+
+    @include large {
+      margin-bottom: 20px;
+      font-size: 20px;
+    }
+
+    span {
+      position: relative;
+      @include yellowLineUnderTitle();
+    }
   }
 
   &_text {
-    margin-bottom: 44px;
+    margin-bottom: 60px;
     font-size: 20px;
     text-align: center;
+
+    @include x-large {
+      margin-bottom: 40px;
+    }
+
+    @include large {
+      margin-bottom: 30px;
+      font-size: 16px;
+    }
+
+    @include xx-small {
+      margin-bottom: 30px;
+      font-size: 16px;
+    }
   }
 }
 
 .button_group {
   display: flex;
   justify-content: space-between;
-  padding: 0 350px;
+  padding: 0 280px;
+
+  @include x-large {
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+  }
 }
 
-.button {
-  background-color: transparent;
-  padding: 0 40px;
-  border-radius: 10px;
-  border: 1px solid $color-white!important;
-  color: $color-white;
-  transition: all 0.2s ease-out;
+.button_wrap {
+  &:not(:last-child) .button {
+    @include x-large {
+      margin-bottom: 20px;
+    }
 
-  &:hover {
-    background-color: $color-white;
-    border: 1px solid transparent;
-    color: $color-background;
-    box-shadow: 0 0 20px 0 $color-white;
+    @include x-small {
+      margin-bottom: 30px;
+    }
+  }
+
+  @include x-small {
+    width: 100%;
+  }
+
+  .button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 210px;
+    height: 50px;
+    background-color: transparent;
+    padding: 0 40px;
+    border-radius: 10px;
+    border: 1px solid $color-white!important;
+    color: $color-white;
+    font-size: 20px;
+    transition: all 0.2s ease-out;
+    text-transform: uppercase;
+
+    @include large {
+      height: 40px;
+      font-size: 14px;
+      cursor: auto;
+    }
+
+    @include tablets {
+      max-width: 350px;
+    }
+
+    @include x-small {
+      height: 60px;
+      width: 100%;
+      max-width: none;
+    }
+
+    @include xx-small {
+      font-size: 16px;
+    }
+
+    &:hover {
+      background-color: $color-white;
+      border: 1px solid transparent;
+      color: $color-background;
+      box-shadow: 0 0 20px 0 $color-white;
+
+      @include large {
+        background-color: $color-background;
+        border: 1px solid $color-white!important;
+        color: $color-white;
+        box-shadow: none;
+      }
+    }
   }
 }

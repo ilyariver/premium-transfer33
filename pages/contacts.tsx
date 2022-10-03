@@ -1,26 +1,34 @@
-import { FC } from 'react'
-import Header from '../components/Layout/Header/Header'
+import { ReactElement } from 'react'
+import { NextPageWithLayout } from './_app'
+import { ContactsPage } from '../types/contacts'
 import MainLayout from '../components/shared/main-layout/main-layout'
-import Footer from '../components/Layout/Footer/Footer'
 import ContactsInfoPage from '../components/Layout/Sections/contacts-info-page/contacts-info-page'
+import RootSection from '../components/shared/root-section/root-section'
 
-const Contacts: FC<any> = ({contacts}) => {
-	const pageName: string = 'Контакты'
+interface ContactsTypes {
+	contactsPage: ContactsPage
+}
+
+const Contacts: NextPageWithLayout<ContactsTypes> = ({contactsPage}) => {
 
 	return (
-		<>
-			<Header activePage={pageName}/>
-			<MainLayout title={pageName}>
-				<ContactsInfoPage contactsPage={contacts}/>
-			</MainLayout>
-			<Footer />
-		</>
+		<RootSection pageTitle={contactsPage.pageTitle} pages={[contactsPage.title]}>
+			<ContactsInfoPage contacts={contactsPage.contacts} address={contactsPage.address}/>
+		</RootSection>
+	)
+}
+
+Contacts.getLayout = function getLayout(page: ReactElement) {
+	return (
+		<MainLayout title="Контакты">
+			{page}
+		</MainLayout>
 	)
 }
 
 export default Contacts
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
 	const res = await fetch('http://localhost:3000/api/data')
 	const data = await res.json()
 	if (!res.ok) {
@@ -28,8 +36,7 @@ export async function getStaticProps() {
 	}
 	return {
 		props: {
-			contacts: data.contactsPage,
+			contactsPage: data.contactsPage,
 		},
-		revalidate: 10,
 	}
 }

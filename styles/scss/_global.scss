@@ -18,7 +18,10 @@ body {
   font-weight: 400;
   line-height: normal;
   color: $color-white;
-  overflow-x: hidden;
+
+  & #__next {
+    overflow-x: hidden!important;
+  }
 
   &.modal-active {
     margin-right: $without-scroll-width;

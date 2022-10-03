@@ -1,17 +1,35 @@
-import { FC } from 'react'
 import style from './write-to-us.module.scss'
-import MainButton from '../main-button/main-button'
+import Link from 'next/link'
+import useSWR from 'swr'
+import { fetcher } from '../../../common/fetcher'
 
 const WriteToUs = () => {
-	return (
-		<>
-			<div className={style.appeal_title}>Мы на связи</div>
-			<div className={style.appeal_text}>свяжитесь с нами, если хотите узнать больше</div>
-			<div className={style.button_group}>
-				<MainButton text="Написать в whatsapp" className={style.button} />
-				<MainButton text="Написать в telegram" className={style.button} />
+	const { data } = useSWR('http://localhost:3000/api/data', fetcher)
+	if (!data) return null
+	const { writeUs: { buttons, text, title } } = data
+
+	return (<section className={style.section}>
+			<div className="container">
+				<div className={style.appeal_title}><span>{title}</span></div>
+				<div className={style.appeal_text}>{text}</div>
+				<div className={style.button_group}>
+					{buttons.map((item: {
+						link: string
+						text: string | undefined }) => {
+							return (
+								<div key={item.text} className={style.button_wrap}>
+									<Link href={item.link} >
+										<a className={style.button}>
+											{item.text}
+										</a>
+									</Link>
+								</div>
+							)
+						})
+					}
+				</div>
 			</div>
-		</>
+		</section>
 	)
 }
 

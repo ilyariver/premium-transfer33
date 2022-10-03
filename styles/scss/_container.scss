@@ -1,5 +1,4 @@
 .container {
-  position: relative;
   min-width: 320px;
   max-width: 1400px;
   width: 100%;
@@ -7,7 +6,7 @@
   margin: 0 auto;
 
   @include x-small {
-    padding: 0 25px;
+    padding: 0 20px;
   }
 
   @include x-large {

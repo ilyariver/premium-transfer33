@@ -3,20 +3,96 @@
 @import '../../../../../styles/scss/shared/helper';
 
 .section {
-  margin-bottom: 125px;
+  position: relative;
+  padding: 100px 0;
+  background-color: $color-light-background;
+
+  @include x-large {
+    padding: 70px 0;
+  }
+
+  @include tablets {
+    padding: 50px 0;
+  }
+
+  &:after {
+    @include sectionDie(70, top, 20);
+  }
+
+  &:before {
+    @include sectionDie(70, bottom, 20);
+  }
 }
 
 .title {
   margin-bottom: 80px;
   font-size: 35px;
   text-transform: uppercase;
+
+  @include x-large {
+    font-size: 30px;
+  }
+
+  @include large {
+    margin-bottom: 50px;
+    font-size: 26px;
+  }
+
+  @include tablets {
+    margin-bottom: 50px;
+    font-size: 25px;
+  }
+
+  @include x-small {
+    font-size: 29px;
+  }
+
+  @include xx-small {
+    font-size: 25px;
+  }
+
+  span {
+    position: relative;
+    @include yellowLineUnderTitle();
+  }
 }
+
 
 .list {
   padding: 0 200px;
+
+  @include x-large {
+    padding: 0 100px;
+  }
+
+  @include small {
+    padding: 0 30px;
+  }
+
+  @include x-small {
+    padding: 0 20px;
+  }
 }
 
 .item {
+  &::marker {
+    content: "☐";
+    font-size: 30px;
+    font-weight: 700;
+    color: $color-yellow;
+
+    @include large {
+      font-size: 20px;
+    }
+
+    @include tablets {
+      font-size: 20px;
+    }
+
+    @include small {
+      font-size: 16px;
+    }
+  }
   &:not(:last-child) {
     margin-bottom: 30px;
   }
@@ -28,4 +104,25 @@
   font-size: 20px;
   font-weight: 300;
   line-height: 1.5;
+
+  @include large {
+    padding-left: 20px;
+    font-size: 18px;
+    line-height: 1.6;
+  }
+
+  @include tablets {
+    padding-left: 20px;
+    font-size: 16px;
+  }
+
+  @include small {
+    line-height: 1.9;
+  }
+
+  @include x-small {
+    padding-left: 15px;
+    font-size: 14px;
+    line-height: 1.7;
+  }
 }

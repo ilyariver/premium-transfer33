@@ -1,0 +1,9 @@
+@import '../../../styles/scss/variables';
+@import '../../../styles/scss/breakpoint';
+@import '../../../styles/scss/shared/helper';
+
+.main {
+  @include tablets {
+    padding-top: 80px;
+  }
+}

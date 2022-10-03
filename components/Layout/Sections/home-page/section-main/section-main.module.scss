@@ -1,15 +1,18 @@
 @import '../../../../../styles/scss/variables';
 @import '../../../../../styles/scss/breakpoint';
+@import '../../../../../styles/scss/shared/helper';
 
 .section_main {
   position: relative;
-  margin-bottom: 100px;
   background-image: url(#{$IMG_PATH}/dark-auto.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
   height: 100vh;
-  box-shadow: inset 0 -50px 50px 0px $color-background;
+
+  @include xx-large {
+    background-position: center;
+  }
 
   &:after {
     content: "";
@@ -22,15 +25,70 @@
   }
 }
 
+.logo {
+  display: none;
+
+  @include tablets {
+    display: block;
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    @include background(contain);
+    box-shadow: 0 0 25px 5px #ffffff4a;
+    width: 300px;
+    height: 39px;
+    z-index: 5;
+    border-radius: 5px;
+  }
+}
+
+.wrap {
+  position: relative;
+  height: 100vh;
+}
+
 .button {
   position: absolute;
-  bottom: 10%;
+  bottom: 20%;
   left: 50%;
+  padding: 0 50px;
   transform: translateX(-50%);
   background-color: $color-yellow;
   transition: background-color .2s ease-in-out;
 
+  @include large {
+    height: 40px!important;
+    font-size: 14px!important;
+    cursor: auto;
+  }
+
+  @include small {
+    height: 60px!important;
+    width: 100%;
+  }
+
   &:hover {
     background-color: darken($color-yellow, 10%);
+
+    @include large {
+      background-color: $color-yellow;
+    }
+  }
+}
+
+.scrollIcon {
+  position: absolute;
+  left: 50%;
+  bottom: 70px;
+  transform: translateX(-50%);
+  z-index: 5;
+
+  @include large {
+    bottom: 50px;
+  }
+
+  @include small {
+    display: none;
   }
 }

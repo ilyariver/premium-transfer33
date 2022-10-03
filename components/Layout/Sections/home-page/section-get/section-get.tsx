@@ -1,35 +1,24 @@
+import { FC } from 'react'
 import style from './section-get.module.scss'
-import square from '../../../../../public/images/icons/square.svg'
+import { WhatGet } from '../../../../../types/what-get'
 
-const SectionGet = () => {
+interface GetsTypes {
+	data: WhatGet
+}
+
+const SectionGet: FC<GetsTypes> = ({ data }) => {
+	const { title, textList } = data
+
 	return (
 		<section className={style.section}>
 			<div className="container">
-				<h2 className={style.title}>Что вы получаете, если выберите нас:</h2>
-				<ul className={style.list} style={{listStyleImage: `url(${square.src})`}}>
-					<li className={style.item}>
-						<div className={style.text}>
-							Каждая машина создаст атмосферу уюта: мягкие кожаные кресла позволяют удобно
-							расположиться,  идеальная шумоизоляция — расслабиться и посвятить время приятной беседе.
-							Остановки на маршруте предполагают, что гости смогут в полной мере насладиться
-							достопримечательностями, даже по пути в отель.
-						</div>
-					</li>
-					<li className={style.item}>
-						<div className={style.text}>
-							Собираясь в путешествие или встречая гостей, закажите элитный автомобиль, чтобы
-							добраться до или из аэропорта. В Premium Transfer33 осуществляется круглосуточная
-							доставка автомобилей. К тому же встреча на вокзале, благодаря премиальному авто,
-							станет еще более приятным сюрпризом.
-						</div>
-					</li>
-					<li className={style.item}>
-						<div className={style.text}>
-							Неизменно вежливый водитель выполнит пожелания, составит оптимальный маршрут поездки,
-							настроит благоприятную температуру салона, поставит музыку с учетом Ваших пристрастий
-							и, конечно, поможет с багажом. Как такси. Только лучше.
-						</div>
-					</li>
+				<h2 className={style.title}><span>{ title }</span></h2>
+				<ul className={style.list} style={{listStyleImage: `url(${textList.icon})`}}>
+					{textList.list.map((item) => (
+						<li className={style.item} key={item}>
+							<div className={style.text}>{ item }</div>
+						</li>))
+					}
 				</ul>
 			</div>
 		</section>

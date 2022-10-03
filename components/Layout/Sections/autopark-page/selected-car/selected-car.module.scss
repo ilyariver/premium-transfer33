@@ -1,0 +1,368 @@
+@import '../../../../../styles/scss/variables';
+@import '../../../../../styles/scss/breakpoint';
+@import '../../../../../styles/scss/shared/helper';
+
+
+.section_main {
+  position: relative;
+  height: 100vh;
+  padding: 160px 0 100px;
+  @include background(cover);
+  background-position: center -100px;
+
+  @include large {
+    height: 100%;
+    width: 100%;
+    padding: 110px 0;
+    background-size: 100%;
+    background-position: center 0;
+  }
+
+  @include tablets {
+    padding-top: 30px;
+    background-position: center 60%;
+  }
+
+  @include xx-small {
+    background-position: center 0;
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: url('#{$IMG_PATH}/pattern.png');
+    width: 100%;
+    height: 100%;
+    opacity: 0.5;
+  }
+}
+
+.breadcrumbs {
+  padding-bottom: 70px;
+
+  @include large {
+    padding-bottom: 400px;
+  }
+
+  @include tablets {
+    padding-bottom: 300px;
+  }
+
+  @include small {
+    padding-bottom: 200px;
+  }
+
+  @include x-small {
+    padding-bottom: 100px;
+  }
+
+  @include xx-small {
+    padding-bottom: 70px;
+  }
+}
+
+.section_gallery {
+  padding: 60px 0 100px;
+
+  @include large {
+    padding: 30px 0 0;
+  }
+
+  @include x-small {
+    padding: 30px 0 0;
+  }
+}
+
+.title, .options_title {
+  margin-bottom: 95px;
+  font-size: 28px;
+  text-transform: uppercase;
+  text-align: center;
+  font-family: PlayfairDisplay, serif;
+
+  @include large {
+    margin-bottom: 60px;
+    font-size: 25px;
+  }
+
+  @include small {
+    font-size: 20px;
+  }
+
+  @include x-small {
+    margin-bottom: 40px;
+    font-size: 16px;
+  }
+
+  span {
+    position: relative;
+    @include yellowLineUnderTitle();
+  }
+}
+
+.button_wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 90px;
+
+  @include large {
+    margin-bottom: 70px;
+  }
+
+  @include x-small {
+    margin-bottom: 50px;
+  }
+
+  @include xx-small {
+    margin-bottom: 40px;
+  }
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 295px;
+  height: 50px;
+  background-color: $color-yellow;
+  @include buttonHover($color-yellow, true);
+  color: $color-background;
+  border-radius: 5px;
+  text-transform: uppercase;
+  transition: background-color 0.15s ease;
+
+  @include large {
+    @include buttonHover($color-yellow, false);
+    width: 255px;
+    height: 45px!important;
+    font-size: 16px!important;
+  }
+
+  @include small {
+    width: 100%;
+    font-size: 15px!important;
+  }
+}
+
+.gallery {
+  display: flex;
+
+  @include small {
+    flex-direction: column;
+  }
+
+  &_wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30%;
+
+    @include small {
+      margin-bottom: 30px;
+      width: 100%;
+      height: 220px;
+      flex-direction: row;
+    }
+
+    @include x-small {
+      height: 160px;
+    }
+
+    @include xx-small {
+      height: 100px;
+    }
+  }
+}
+
+.car {
+  @include background(cover);
+  width: 100%;
+  height: 100%;
+  margin-bottom: 40px;
+
+  @include large {
+    margin-bottom: 20px;
+  }
+
+  @include small {
+    margin-bottom: 0;
+  }
+
+  &:not(:last-child) {
+    @include small {
+      margin-right: 20px;
+    }
+
+    @include xx-small {
+      margin-right: 10px;
+    }
+  }
+
+  &.main {
+    width: 70%;
+    height: 500px;
+    margin-right: 40px;
+
+    @include large {
+      height: 440px;
+      margin-right: 20px;
+    }
+
+    @include tablets {
+      height: 370px;
+    }
+
+    @include small {
+      margin-bottom: 20px;
+      margin-right: 0;
+      width: 100%;
+    }
+
+    @include x-small {
+      height: 300px;
+    }
+
+    @include xx-small {
+      height: 200px;
+      margin-bottom: 10px;
+    }
+  }
+}
+
+.description {
+  margin-bottom: 100px;
+  width: 70%;
+  font-weight: 300;
+  font-size: 18px;
+  @include secondaryFont();
+
+  @include large {
+    margin-bottom: 70px;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  @include small {
+    margin-bottom: 40px;
+    width: 100%;
+    font-size: 14px;
+  }
+
+  @include x-small {
+    margin-bottom: 80px;
+  }
+}
+
+.options_title {
+  margin-bottom: 30px;
+}
+
+.list {
+  margin-bottom: 60px;
+
+  @include large {
+    margin-bottom: 50px;
+  }
+
+  @include x-small {
+    margin-bottom: 40px;
+  }
+}
+
+.item {
+  @include secondaryFont();
+  padding-left: 15px;
+  font-weight: 300;
+  font-size: 18px;
+
+  &:not(:last-child) {
+    margin-bottom: 10px;
+
+    @include large {
+      margin-bottom: 5px;
+    }
+
+    @include x-small {
+      margin-bottom: 10px;
+    }
+  }
+
+  @include large {
+    font-size: 16px;
+  }
+
+  @include small {
+    font-size: 14px;
+  }
+}
+
+.rent_list {
+  padding: 0 280px;
+  width: 100%;
+
+  @include large {
+    padding: 0 220px;
+  }
+
+  @include tablets {
+    padding: 0 100px;
+  }
+
+  @include small {
+    padding: 0;
+  }
+}
+
+.rent_item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 25px;
+
+  @include large {
+    font-size: 16px;
+  }
+
+  span {
+    width: 100%;
+    height: 35px;
+    border-bottom: 1px dotted darken($color-yellow, 35%);
+    margin: 0 15px;
+
+    @include large {
+      height: 22px;
+      margin: 0 6px;
+    }
+  }
+
+  &:not(:last-child) {
+    margin-bottom: 60px;
+
+    @include large {
+      margin-bottom: 40px;
+    }
+  }
+}
+
+.name {
+  white-space: nowrap;
+}
+
+.cost {
+  white-space: nowrap;
+  @include secondaryFont();
+  color: $color-gray-text;
+}
+
+.scrollIcon {
+  position: absolute;
+  left: 50%;
+  bottom: 50px;
+  transform: translateX(-50%);
+  z-index: 5;
+
+  @include large {
+    display: none;
+  }
+}

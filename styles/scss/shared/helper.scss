@@ -1,5 +1,16 @@
 @import "styles/scss/variables";
 
+@mixin buttonGlobal($image) {
+  margin: 0;
+  padding: 0;
+  background-position: center;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-image: url("#{$IMG_PATH}#{$image}");
+  border: none;
+}
+
 @mixin position($number) {
   left: $number;
   transform: translateX(-#{$number});
@@ -8,7 +19,6 @@
 @mixin backgroundImg($img, $size) {
   background-image: url('#{$IMG_PATH}/#{$img}');
   @include background($size);
-
 }
 
 @mixin background($size) {
@@ -22,5 +32,62 @@
 
 @mixin secondaryFont() {
   font-family: NotoSans, sans-serif;
+}
+
+@mixin buttonHover($color, $hasHover) {
+  @if $hasHover {
+    &:hover {
+      background-color: darken($color, 10%);
+    }
+  } @else {
+    &:hover {
+      background-color: $color;
+    }
+  }
+}
+
+@mixin yellowLineUnderTitle() {
+  &:before {
+    content: "";
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 1px;
+    background: radial-gradient(circle, rgba(255,184,0,1) 52%, rgba(37,37,37,0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffb800",endColorstr="#252525",GradientType=1);
+  }
+}
+
+@mixin sectionDie($number, $position, $px, $width: 50%) {
+  content: "";
+  position: absolute;
+  @if $position == 'bottom' {
+    bottom: -#{$px}px;
+    right: -40px;
+  } @else if $position == 'top' {
+    top: -#{$px}px;
+    left: -40px;
+  }
+  width: $width;
+  margin-left: 20px;
+  height: #{$px}px;
+  transform: skew(#{ $number }deg);
+  background: $color-light-background;
+}
+
+@mixin center($extend: true) {
+  @if $extend {
+    @extend %center;
+  } @else {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+}
+
+%center {
+  @include center($extend: false);
 }
 

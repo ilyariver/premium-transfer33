@@ -1,8 +1,4 @@
 export interface About {
-	aboutCompany: Company
-}
-
-export interface Company {
 	title: string
 	description: string
 	director: {
@@ -11,7 +7,7 @@ export interface Company {
 	}
 	mission: string
 	numberOrders: {
-		number: number
-		text: string
+		number?: number
+		text?: string
 	}
 }

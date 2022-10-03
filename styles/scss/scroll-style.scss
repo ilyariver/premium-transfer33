@@ -1,5 +1,5 @@
 body::-webkit-scrollbar {
-  width: 15px;               /* ширина всей полосы прокрутки */
+  width: 17px;               /* ширина всей полосы прокрутки */
 }
 
 body::-webkit-scrollbar-track {
@@ -8,8 +8,8 @@ body::-webkit-scrollbar-track {
 
 body::-webkit-scrollbar-thumb {
   background-color: $color-slider;    /* цвет бегунка */
-  border-radius: 20px;       /* округлось бегунка */
-  border: 3px solid $color-scroll-line;  /* отступ вокруг бегунка */
+  //border-radius: 20px;       /* округлось бегунка */
+  border: 2px solid $color-scroll-line;  /* отступ вокруг бегунка */
 }
 
 /* Работает в Firefox */

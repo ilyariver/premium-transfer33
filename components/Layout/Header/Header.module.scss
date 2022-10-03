@@ -1,60 +1,424 @@
 @import '../../../styles/scss/variables';
 @import '../../../styles/scss/breakpoint';
+@import '../../../styles/scss/shared/helper';
 
 .header {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
+    @include tablets {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        align-items: center;
+        height: 80px;
+        background-color: $color-light-background;
+        padding: 10px 0 0;
+        z-index: 20;
+
+        &:after {
+            @include sectionDie(240, bottom, 10, 20%);
+            z-index: 20;
+        }
+    }
+
+    @include small {
+        &:after {
+            @include sectionDie(240, bottom, 10, 40%);
+            z-index: 20;
+        }
+    }
+
+    &_wrap {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        border-bottom: 1px solid #242424;
+        background-color: #0f0e1026;
+        width: 100%;
+        z-index: 25;
+        transition: all 0.3s ease;
+
+        @include tablets {
+            display: flex;
+            flex-direction: column-reverse;
+            justify-content: space-between;
+            background-color: $color-light-background;
+            width: 60%;
+            height: 100vh;
+            left: auto;
+            bottom: 0;
+            box-shadow: 2px 0 20px 0 #000000B2;
+            transform: translateX(100%);
+
+            &.active {
+                transform: translateX(0);
+            }
+        }
+
+        @include small {
+            width: 100%;
+            box-shadow: none;
+        }
+    }
+}
+
+.burger {
+    display: none;
+
+    @include tablets {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+
+    &_btn {
+        @include buttonGlobal('/icons/burger.svg');
+        background-size: 30px;
+        background-color: $color-extra-light-background;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+
+        @include x-small {
+            width: 50px;
+            height: 50px;
+            background-size: 20px;
+        }
+    }
+}
+
+.close_btn_wrap {
+    display: none;
+
+    @include tablets {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        margin-bottom: 30px;
+    }
+}
+
+.close_btn {
+    width: 30px;
+    height: 30px;
+    @include buttonGlobal('/icons/close.svg');
+}
+
+.top {
+    background-color: $color-top;
+
+    @include tablets {
+        margin-bottom: 50px;
+        padding: 20px 0 10px;
+        background-color: transparent;
+    }
+}
+
+.top_wrap {
+    display: flex;
+    justify-content: space-between;
+
+    @include tablets {
+        flex-direction: column;
+    }
+}
+
+.top_order_btn {
+    position: relative;
+    height: 40px;
+    background-color: $color-yellow;
+    transition: all 0.2s ease-out;
+
+    @include large {
+        height: 30px;
+    }
+
+    @include tablets {
+        margin-bottom: 30px;
+        height: 50px;
+        border-radius: 5px;
+    }
+
+    &:hover {
+        background-color: darken($color-yellow, 5%);
+        & .link_order {
+            color: $color-yellow;
+        }
+    }
+}
+
+.link_order {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 10px 50px 15px;
+    width: 220px;
+    @include center;
+    background: $color-yellow;
+    color: #ccc;
+    border: 0;
+    font-size: 16px;
+    transition: .6s ease-out;
+    overflow: hidden;
+
+    @include large {
+        padding: 10px 30px 15px;
+        width: 180px;
+        font-size: 14px;
+        cursor: auto;
+    }
+
+    @include tablets {
+        width: 100%;
+        border-radius: 5px;
+    }
+
+    &:focus {
+        outline: 0;
+    }
+
+    &:before {
+        content: "";
+        display: block;
+        position: absolute;
+        background-color: $color-white;
+        width: 60px;
+        height: 100%;
+        left: 0;
+        top: 0;
+        opacity: .5;
+        filter: blur(30px);
+        transform: translateX(-100px) skewX(-15deg);
+    }
+
+    &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        background-color: rgba(255,255,255,0.2);
+        width: 30px;
+        height: 100%;
+        left: 30px;
+        top: 0;
+        opacity: 0;
+        filter: blur(5px);
+        transform: translateX(-100px) skewX(-15deg);
+    }
+
+    &:hover {
+        background-color: lighten($color-yellow, 10%);
+        cursor: pointer;
+        @include large {
+            cursor: auto;
+        }
+
+        &:before {
+            transform: translateX(300px)  skewX(-15deg);
+            opacity: 0.6;
+            transition: .7s;
+        }
+
+        &:after {
+            transform: translateX(300px) skewX(-15deg);
+            opacity: 1;
+            transition: .7s;
+        }
+
+        @include large {
+            background-color: $color-yellow;
+
+            &:before {
+                transform: translateX(-100px) skewX(-15deg);
+            }
+
+            &:after {
+                transform: translateX(-100px) skewX(-15deg);
+            }
+        }
+    }
+}
+
+.to_order {
+    color: $color-background;
+    transition: all 0.2s ease-out;
+    white-space: nowrap;
+}
+
+.header_contacts_wrap {
+    display: flex;
+    align-items: center;
+    font-style: normal;
+}
+
+.contacts {
+    display: flex;
+    justify-content: flex-end;
+    font-family: NotoSans, sans-serif;
+    font-style: normal;
+    font-size: 14px;
+
+    @include large {
+        font-size: 13px;
+    }
+
+    @include tablets {
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    @include xx-small {
+        flex-direction: column;
+    }
+}
+
+.phone {
+    @include xx-small {
+        margin-bottom: 20px;
+    }
+}
+
+.tel {
+    margin-right: 40px;
+    transition: all 0.2s ease-out;
+
+    @include tablets {
+        margin: 0;
+        font-size: 18px;
+    }
+
+    @include xx-small {
+        font-size: 15px;
+    }
+}
+
+.mail {
+    transition: all 0.2s ease-out;
+}
+
+.bottom {
     display: flex;
     align-items: center;
     padding: 20px 0;
-    width: 100%;
-    height: 90px;
-    font-family: NotoSans, sans-serif;
-    z-index: 2;
+
+    @include large {
+        padding: 10px 0;
+    }
+
+    @include tablets {
+        padding: 30px 0;
+    }
+
+    @include xx-small {
+        padding: 30px 0 0;
+    }
 }
 
 .nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    font-family: NotoSans, sans-serif;
+
+    @include tablets {
+        flex-direction: column;
+    }
 }
 
 .pages {
     width: 100%;
     display: flex;
     justify-content: space-evenly;
+
+    @include tablets {
+        flex-direction: column;
+        margin-bottom: 30px;
+    }
 }
 
 .phone_number {
     display: flex;
     align-items: center;
+
+    @include large {
+        cursor: auto;
+    }
 }
 
-.icon {
-    background-image: url(#{$IMG_PATH}/icons/call.svg);
-    background-repeat: no-repeat;
-    background-size: contain;
+.call_icon, .mail_icon {
+    @include background(contain);
     width: 18px;
     height: 18px;
+    margin-right: 10px;
+    transition: all 0.2s ease-out;
+}
+
+.phone,
+.mail {
+    text-shadow: 0 0 5px $color-gray-text;
+    &:hover {
+        color: $color-yellow;
+        @include large {
+            color: $color-white;
+        }
+        & .call_icon,
+        & .mail_icon {
+            transform: translateY(-2px);
+
+            @include large {
+                transform: translateY(0);
+            }
+        }
+    }
+
+    @include large {
+        text-shadow: none;
+    }
 }
 
 .link {
     position: relative;
+    display: flex;
+    align-content: center;
+    padding: 5px 20px 10px;
+    background-color: lighten($color-background, 3%);
+    border-radius: 5px;
+    transition: background-color .3s ease-in-out;
+
+    @include large {
+        padding: 0 20px 5px;
+        font-size: 14px;
+        cursor: auto;
+    }
+
+    @include tablets {
+        justify-content: center;
+        background-color: $color-light-background;
+        font-size: 25px;
+        text-align: right;
+        border-radius: 0;
+        width: 100%;
+
+        &:not(:last-child) {
+            margin-bottom: 30px;
+        }
+    }
 
     &.active {
         cursor: auto;
-        text-shadow: 0 0 20px $color-yellow;
+        background-color: lighten($color-background, 10%);
+        box-shadow: 0 5px 0 0 $color-yellow;
+        transition: all 0.2s ease-out;
 
-        &:after {
-            content: "";
-            position: absolute;
-            bottom: -7px;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background-color: $color-yellow;
+        @include large {
+            box-shadow: 0 3px 0 0 $color-yellow;
+        }
+
+        @include tablets {
+            background-color: transparent;
         }
     }
 
@@ -67,22 +431,45 @@
         height: 5px;
         background-color: $color-white;
         transition: width .3s ease-in-out;
+
+        @include large {
+            content: normal;
+        }
     }
 
-    &:not(.active):hover:after {
-        content: "";
-        position: absolute;
-        bottom: -7px;
-        left: 0;
-        width: 100%;
-        height: 5px;
-        background-color: $color-yellow;
-        transition: width .3s ease-in-out;
+    &:not(.active):hover {
+        background-color: lighten($color-background, 5%);
+
+        &::after {
+            content: "";
+            position: absolute;
+            bottom: -7px;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background-color: $color-yellow;
+            transition: width .3s ease-in-out;
+
+            @include large {
+                content: normal;
+            }
+        }
+    }
+
+    &.active:hover {
+        background-color: lighten($color-background, 5%);
+        transform: translateY(3px);
+        box-shadow: 0 2px 0 0 $color-yellow;
+
+        @include large {
+            background-color: lighten($color-background, 10%);
+            transform: translateY(0);
+            box-shadow: 0 3px 0 0 $color-yellow;
+        }
     }
 }
 
 .logo {
-    background-image: url(#{$IMG_PATH}/logo.png);
     background-repeat: no-repeat;
     background-size: contain;
     width: 300px;
@@ -94,5 +481,20 @@
         transform: scale(1.03);
         box-shadow: 0 0 20px 0 #FFFFFF7C;
         transition: transform 0.3s ease-in-out;
+    }
+
+    @include large {
+        width: 270px;
+        height: 35px;
+        cursor: auto;
+
+        &:hover {
+            transform: scale(1);
+            box-shadow: none;
+        }
+    }
+
+    @include tablets {
+        display: none;
     }
 }
