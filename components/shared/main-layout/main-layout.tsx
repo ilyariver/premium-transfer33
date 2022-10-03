@@ -16,11 +16,11 @@ const MainLayout: FC<LayoutTypes> = ({children, title}) => {
 			<Head>
 				<title key="title">{`${title} ${data?.title ? data.title : '|PT33'}`}</title>
 			</Head>
-			<Header activePage={title} data={data?.header} />
+			<Header activePage={title} data={data.header} />
 			<main style={{overflow: 'hidden'}} className={style.main}>
 				{ children }
 			</main>
-			<Footer data={data?.footer} />
+			<Footer data={data.footer} />
 		</>
 	)
 }

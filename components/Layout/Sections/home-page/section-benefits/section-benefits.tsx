@@ -57,56 +57,6 @@ const SectionBenefits: FC<SecondScreenTypes> = ({data}) => {
                                 }
                             })
                         }
-
-                        {/*<li className={style.item}>*/}
-                        {/*    <div className={style.img} style={{backgroundImage: `url(${oval1.src})`}}>*/}
-                        {/*      <div className={`${style.link} ${style.link_1}`}>*/}
-                        {/*          <Image alt="Картинка" src={car} />*/}
-                        {/*      </div>*/}
-                        {/*    </div>*/}
-                        {/*    <div className={style.description}>*/}
-                        {/*        <div className={`${style.index} ${style.index_right}`}>1</div>*/}
-                        {/*        <div className={style.text}>Трансфер в любой <br/> город России</div>*/}
-                        {/*    </div>*/}
-                        {/*</li>*/}
-
-                        {/*<li className={style.item}>*/}
-                        {/*    <div className={style.description}>*/}
-                        {/*        <div className={`${style.index} ${style.index_left}`}>2</div>*/}
-                        {/*        <div className={style.text}>Свадебные кортежи</div>*/}
-                        {/*    </div>*/}
-                        {/*    <div className={style.img} style={{backgroundImage: `url(${oval2.src})`}}>*/}
-                        {/*        <div className={`${style.link} ${style.link_2}`}>*/}
-                        {/*            <Image alt="Картинка" src={car2} />*/}
-                        {/*        </div>*/}
-                        {/*    </div>*/}
-                        {/*</li>*/}
-
-                        {/*<li className={style.item}>*/}
-                        {/*    <div className={style.img} style={{backgroundImage: `url(${oval3.src})`}}>*/}
-                        {/*        <div className={`${style.link} ${style.link_1}`}>*/}
-                        {/*        </div>*/}
-                        {/*    </div>*/}
-                        {/*    <div className={style.description}>*/}
-                        {/*        <div className={`${style.index} ${style.index_right}`}>3</div>*/}
-                        {/*        <div className={style.text}>Деловые поездки</div>*/}
-                        {/*    </div>*/}
-                        {/*</li>*/}
-
-                        {/*<li className={style.item}>*/}
-                        {/*    <div className={style.description}>*/}
-                        {/*        <div className={`${style.index} ${style.index_left}`}>4</div>*/}
-                        {/*        <div className={`${style.text} ${style.text_left}`}>Сопровождение и<br/>*/}
-                        {/*            обслуживание делегаций,<br/>*/}
-                        {/*            экономических форумов</div>*/}
-                        {/*    </div>*/}
-                        {/*    <div className={style.img} style={{backgroundImage: `url(${oval2.src})`}}>*/}
-                        {/*        <div className={`${style.link} ${style.link_2}`}>*/}
-                        {/*            <Image alt="Картинка" src={car3} />*/}
-                        {/*        </div>*/}
-                        {/*    </div>*/}
-                        {/*</li>*/}
-
                     </ul>
                 </div>
             </div>
