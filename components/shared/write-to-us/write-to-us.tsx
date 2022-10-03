@@ -1,10 +1,22 @@
+import { useEffect, useState } from 'react'
 import style from './write-to-us.module.scss'
+import { DataTypes } from '../../../types/Data'
 import Link from 'next/link'
-import useSWR from 'swr'
-import { fetcher } from '../../../common/fetcher'
 
 const WriteToUs = () => {
-	const { data } = useSWR(`${process.env.API_HOST}/data`, fetcher)
+	const [data, setData] = useState<DataTypes>()
+
+	const getData = async () => {
+		const res = await fetch(`https://premium-transfer33-469d.vercel.app/api/data`)
+		const data = await res.json()
+		console.log(data)
+		setData(data)
+	}
+
+	useEffect(() => {
+		getData()
+	},[])
+
 	if (!data) return null
 	const { writeUs: { buttons, text, title } } = data
 
