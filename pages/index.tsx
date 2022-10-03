@@ -47,7 +47,7 @@ Home.getLayout = function getLayout(page: ReactElement) {
 export default Home
 
 export async function getServerSideProps() {
-    const res = await fetch('http://localhost:3000/api/data')
+    const res = await fetch(`${process.env.API_HOST}/data`)
     const fullData = await res.json()
     if (!fullData) {
         return {

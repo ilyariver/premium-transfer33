@@ -40,7 +40,7 @@ Autopark.getLayout = function getLayout(page: ReactElement) {
 export default Autopark
 
 export async function getServerSideProps() {
-	const res = await fetch('http://localhost:3000/api/data')
+	const res = await fetch(`${process.env.API_HOST}/data`)
 	const carsPark = await res.json()
 	if (!carsPark) {
 		return {

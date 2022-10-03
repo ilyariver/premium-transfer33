@@ -29,7 +29,7 @@ Contacts.getLayout = function getLayout(page: ReactElement) {
 export default Contacts
 
 export async function getServerSideProps() {
-	const res = await fetch('http://localhost:3000/api/data')
+	const res = await fetch(`${process.env.API_HOST}/data`)
 	const data = await res.json()
 	if (!res.ok) {
 		throw new Error(`Failed to fetch posts, received status ${res.status}`)
