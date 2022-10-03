@@ -9,7 +9,7 @@ import { fetcher } from '../../../common/fetcher'
 
 const MainLayout: FC<LayoutTypes> = ({children, title}) => {
 
-	const { data } = useSWR('http://localhost:3000/api/data', fetcher)
+	const { data } = useSWR(`${process.env.API_HOST}/data`, fetcher)
 
 	return (
 		<>
