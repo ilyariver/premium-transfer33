@@ -14,8 +14,8 @@ const About: NextPageWithLayout<AboutTypes> = ({about}) => {
 	if (!about) return null
 
 	return (
-		<RootSection pageTitle={about.title} pages={[about.title]}>
-			<AboutPage {...about}/>
+		<RootSection pageTitle={about.aboutPageTitle} pages={[about.aboutPageTitle]}>
+			<AboutPage {...about} />
 		</RootSection>
 	)
 }
@@ -32,14 +32,25 @@ About.getLayout = function getLayout(page: ReactElement) {
 export default About
 
 export async function getServerSideProps() {
-	const res = await fetch(`${process.env.API_HOST}/data`)
-	const data = await res.json()
-	if (!res.ok) {
-		throw new Error(`Failed to fetch posts, received status ${res.status}`)
+	const res = await fetch(`${process.env.API_HOST}/wp-json/wp/v2/pages?_embed`)
+	const fullData = await res.json()
+	if (!fullData) {
+		return {
+			notFound: true
+		}
 	}
+	const dataCFS = fullData[0].CFS
+
 	return {
 		props: {
-			about: data.aboutCompany
+			about: {
+				aboutPageTitle: dataCFS.aboutPageTitle,
+				aboutPageDescription: dataCFS.aboutPageDescription,
+				directorName: dataCFS.directorName,
+				aboutDirector: dataCFS.aboutDirector,
+				companyMission: dataCFS.companyMission,
+				numberOrders: dataCFS.numberOrders,
+			}
 		},
 	}
 }

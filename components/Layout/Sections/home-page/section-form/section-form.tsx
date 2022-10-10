@@ -19,10 +19,13 @@ const SectionForm: FC<SectionFormTypes> = ({ data }) => {
 	if (!data) return null
 
 	const {
-		title,
-		text,
-		img,
-		form
+		titleForm,
+		textForm,
+		imgBackForm,
+		nameInput,
+		telInput,
+		textAreaInput,
+		formButton
 	} = data
 
 
@@ -49,20 +52,20 @@ const SectionForm: FC<SectionFormTypes> = ({ data }) => {
 				<div className={`container ${style.container}`}>
 					<div className={`content ${style.content}`}>
 						<div className={style.information}>
-							<h3 className={style.title}>{ title }</h3>
-							<p className={style.text}>{ text }</p>
+							<h3 className={style.title}>{ titleForm }</h3>
+							<p className={style.text}>{ textForm }</p>
 						</div>
 						<form className={style.form_content} onSubmit={handleSubmit}>
 							<div className={style.item}>
 								<label
-									htmlFor={ form.name }
+									htmlFor={ nameInput }
 									className={`${style.label} ${activeNameLabel || name ? style.active : ''}`}
 								>
-									{ form.name }
+									{ nameInput }
 								</label>
 								<input
 									required
-									id={ form.name }
+									id={ nameInput }
 									type="text"
 									minLength={1}
 									className={style.input}
@@ -74,13 +77,13 @@ const SectionForm: FC<SectionFormTypes> = ({ data }) => {
 							</div>
 							<div className={style.item}>
 								<label
-									htmlFor={ form.tel }
+									htmlFor={ telInput }
 									className={`${style.label} ${phone ? style.active : ''}`}
 								>
-									{ form.tel }
+									{ telInput }
 								</label>
 								<Input
-									id={ form.tel }
+									id={ telInput }
 									className={style.input}
 									minLength="16"
 									maxLength="16"
@@ -96,13 +99,13 @@ const SectionForm: FC<SectionFormTypes> = ({ data }) => {
 							</div>
 							<div className={style.item_textarea}>
 								<label
-									htmlFor={ form.textArea }
+									htmlFor={ textAreaInput }
 									className={`${style.label} ${style.label_textarea} ${activeMessageLabel || message ? style.active : ''}`}
 								>
-									{ form.textArea }
+									{ textAreaInput }
 								</label>
 								<textarea
-									id={ form.textArea }
+									id={ textAreaInput }
 									required
 									className={`${style.input} ${style.textarea}`}
 									value={message}
@@ -111,7 +114,7 @@ const SectionForm: FC<SectionFormTypes> = ({ data }) => {
 									onChange={event => setMessage(event.target.value)}
 								/>
 							</div>
-							<MainButton text={form.button} className={style.button} />
+							<MainButton text={formButton} className={style.button} />
 						</form>
 					</div>
 				</div>
@@ -134,7 +137,7 @@ const SectionForm: FC<SectionFormTypes> = ({ data }) => {
 						left: 0;
 						right: 0;
 						bottom: 0;
-						background-image: url(${img});
+						background-image: url(${imgBackForm});
 						opacity: 0.2;
 						z-index: 0;
 					  }

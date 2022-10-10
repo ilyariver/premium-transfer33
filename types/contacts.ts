@@ -1,23 +1,27 @@
-import location from '../public/images/icons/location-big.svg'
-
 export interface ContactsPage {
-	title: string
-	pageTitle: string
-	contacts: Contacts[]
-	address: Address
+	contactsPageName: string
+	contactsPageTitle: string
+	contactsList: Contacts[]
 }
 
 export interface Contacts {
-	id: number
-	type: string
-	icon: string
-	phone: {
-		tel: string
-		link: string
-	}
+	contactsType: string
+	contactIcon: string
+	contactView: string
+	contactLink: string
 }
 
 export interface Address {
-	icon: string
-	text: string
+	iconPageContact?: string
+	namePageContact?: string
+	iconFooterContact?: string
+	nameFooterContact: string
+	linkFooterContact: string
+}
+
+export interface Location {
+	iconPageLocation?: string
+	iconFooterLocation?: string
+	nameFooterLocation: string
+	linkFooterLocation?: string
 }

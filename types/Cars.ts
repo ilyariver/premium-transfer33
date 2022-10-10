@@ -7,35 +7,24 @@ export interface Cars {
 }
 
 export interface Park {
-	id: number
 	title: string
 	link: string
 	img: string
 	imgPage: string
-	gallery: Photos
-	description: string
-	specifications: {
-		icon: string
-		list: string[]
-		text: string
-	}
-	rent: {
-		title: string
-		service: rentService[]
-	}
-}
-
-interface Photos {
 	car1: string
 	car2: string
 	car3: string
+	description: string
+	specifications: string
+	specificationsList: {
+		specificationsItem: string
+	}[]
+	text: string
+	rentTitle: string
+	rentstList: rentService[]
 }
 
 export interface rentService {
 	title: string
 	cost: string
-}
-
-export type CarsType = {
-	cars: Cars[]
 }

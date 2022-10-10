@@ -1,31 +1,22 @@
 export interface HeaderData {
-	title: string
-	link: string
-	logo: Logo
-	top: Top
-	bottom: {
-		left: NavList[]
-		right: NavList[]
-	}
+	logo_img: string
+	top_button_title: string
+	list_contacts: listHeaderContacts[]
+	leftBottomNavList: NavList[]
+	rightBottomNavList: NavList[]
 }
 
-export interface Top {
-	orderBtn: NavList
-	listContacts: TopContactsList[]
-}
-
-export interface TopContactsList {
+export interface listHeaderContacts {
 	icon: string
 	connection: string
 	link: string
 }
 
 export interface NavList {
-	name: string
-	link: string
+	nameNavButton: string
+	linkNavButton: string
 }
 
 export interface Logo {
 	img: string
-	alt: string
 }

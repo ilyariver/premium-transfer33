@@ -1,10 +1,10 @@
 export interface WriteUs {
-	title: string
-	text: string
-	buttons: Buttons[]
+	writeToUsTitle: string
+	writeToUsText: string
+	writeToUsButtonList: Buttons[]
 }
 
 export interface Buttons {
-	link: string
-	text: string
+	writeToUsLinkButton: string
+	writeToUsTextButton: string
 }

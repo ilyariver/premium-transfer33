@@ -1,19 +1,21 @@
 import { ReactElement } from 'react'
 import { NextPageWithLayout } from './_app'
-import { ContactsPage } from '../types/contacts'
+import { Address, ContactsPage, Location } from '../types/contacts'
 import MainLayout from '../components/shared/main-layout/main-layout'
 import ContactsInfoPage from '../components/Layout/Sections/contacts-info-page/contacts-info-page'
 import RootSection from '../components/shared/root-section/root-section'
 
 interface ContactsTypes {
 	contactsPage: ContactsPage
+	address: Address[]
+	location: Location
 }
 
-const Contacts: NextPageWithLayout<ContactsTypes> = ({contactsPage}) => {
+const Contacts: NextPageWithLayout<ContactsTypes> = ({contactsPage, address, location}) => {
 
 	return (
-		<RootSection pageTitle={contactsPage.pageTitle} pages={[contactsPage.title]}>
-			<ContactsInfoPage contacts={contactsPage.contacts} address={contactsPage.address}/>
+		<RootSection pageTitle={contactsPage.contactsPageTitle} pages={[contactsPage.contactsPageName]}>
+			<ContactsInfoPage contacts={address} location={location} />
 		</RootSection>
 	)
 }
@@ -29,14 +31,27 @@ Contacts.getLayout = function getLayout(page: ReactElement) {
 export default Contacts
 
 export async function getServerSideProps() {
-	const res = await fetch(`${process.env.API_HOST}/data`)
-	const data = await res.json()
-	if (!res.ok) {
-		throw new Error(`Failed to fetch posts, received status ${res.status}`)
+	const res = await fetch(`${process.env.API_HOST}/wp-json/wp/v2/pages?_embed`)
+	const fullData = await res.json()
+	if (!fullData) {
+		return {
+			notFound: true
+		}
 	}
+	const dataCFS = fullData[1].CFS
+	const dataCFSMain = fullData[2].CFS
+
 	return {
 		props: {
-			contactsPage: data.contactsPage,
+			contactsPage: {
+				contactsPageName: dataCFS.contactsPageName,
+				contactsPageTitle: dataCFS.contactsPageTitle,
+			},
+			address: dataCFSMain.footerContactsList,
+			location: {
+				iconPageLocation: dataCFSMain.iconPageLocation,
+				nameFooterLocation: dataCFSMain.nameFooterLocation,
+			}
 		},
 	}
 }

@@ -10,13 +10,14 @@ interface CarItemTypes {
 }
 
 const CarItem: FC<CarItemTypes> = ({cars, className, rootPath}) => {
+	const { park } = cars
 
 	return (
 		<ul className={`${style.list} ${className}`}>
 			{
-				cars.park.map(car => {
+				park.map((car, idx) => {
 					return (
-						<li className={style.item} key={car.id}>
+						<li className={`${style.item} ${park.length === 3 ? style.numbers : ''}`} key={idx}>
 							<Link href={`${rootPath}/${car.link}`}>
 								<a className={style.link}>
 									<div className={style.img} style={{backgroundImage: `url(${car.img})`}}>

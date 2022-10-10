@@ -1,17 +1,17 @@
 import { FC } from 'react'
 import { FirstScreen } from '../../../../../types/first-screen'
-import { Logo } from '../../../../../types/header-data'
 import style from './section-main.module.scss'
 import MainButton from '../../../../shared/main-button/main-button'
 import ScrollDown from '../../../../shared/scroll-down/scroll-down'
+import Link from 'next/link'
 
 interface SectionMainTypes {
     data: FirstScreen
-    logo: Logo
+    logo: string
 }
 
 const SectionMain: FC<SectionMainTypes> = ({data, logo}) => {
-    const { backgroundImage, buttonText, hasScroll } = data
+    const { backgroundImage, buttonToFormText, linkToForm, hasScroll } = data
 
     return (
         <section
@@ -20,10 +20,14 @@ const SectionMain: FC<SectionMainTypes> = ({data, logo}) => {
         >
             <div className="container">
                 <div className={style.wrap}>
-                    <MainButton text={buttonText} className={style.button}/>
-                    <div className={style.logo} style={{backgroundImage: `url(${logo.img})`}} />
+                    <Link href={linkToForm}>
+                        <a>
+                            <MainButton text={buttonToFormText}  className={style.button}/>
+                        </a>
+                    </Link>
+                    <div className={style.logo} style={{backgroundImage: `url(${logo})`}} />
                     <div className={style.scrollIcon}>
-                        { hasScroll && <ScrollDown /> }
+                        { hasScroll ? <ScrollDown /> : '' }
                     </div>
                 </div>
             </div>

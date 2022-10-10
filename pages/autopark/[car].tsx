@@ -35,16 +35,25 @@ export default Catalog;
 
 
 
-export const getServerSideProps: GetServerSideProps = async ({ params }) => {
-	const res = await fetch(`${process.env.API_HOST}/data`)
-	const data = await res.json()
-	if (!res.ok) {
-		throw new Error(`Failed to fetch posts, received status ${res.status}`)
+export const getServerSideProps: GetServerSideProps = async () => {
+	const res = await fetch(`${process.env.API_HOST}/wp-json/wp/v2/pages?_embed`)
+	const fullData = await res.json()
+	if (!fullData) {
+		return {
+			notFound: true
+		}
 	}
+	const fullDataCFS = fullData[2].CFS
 
 	return {
 		props: {
-			cars: data.cars
+			cars: {
+				title: fullDataCFS.title,
+				parentPage: fullDataCFS.parentPage,
+				pageTitle: fullDataCFS.pageTitle,
+				sectionTitle: fullDataCFS.sectionTitle,
+				park: fullDataCFS.parkList,
+			},
 		}
 	}
 }

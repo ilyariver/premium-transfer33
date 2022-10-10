@@ -7,18 +7,18 @@ interface SectionListAdvantagesTypes {
 }
 
 const SectionListAdvantages: FC<SectionListAdvantagesTypes> = ({ data }) => {
-	const { advantagesList, title, img } = data
+	const { advantagesList, advantagesTitle, advantagesImg } = data
 
 	return (
 		<section className={style.section}>
 			<div className="container">
 				<h2 className={style.title}>
-					<span dangerouslySetInnerHTML={{ __html: title }}  />
+					<span dangerouslySetInnerHTML={{ __html: advantagesTitle }}  />
 				</h2>
 			</div>
 				<div className={style.img_content}>
 					<div className={`container ${style.container}`}>
-						<div className={style.img} style={{backgroundImage: `url(${img})`}} aria-label={title} />
+						<div className={style.img} style={{backgroundImage: `url(${advantagesImg})`}} aria-label={advantagesTitle} />
 					</div>
 					<div className="container">
 						<ul className={style.list}>

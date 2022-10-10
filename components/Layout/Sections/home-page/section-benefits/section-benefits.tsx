@@ -3,17 +3,18 @@ import { SecondScreen } from '../../../../../types/second-screen'
 import Image from 'next/image'
 import style from './section-benefits.module.scss'
 
+
 interface SecondScreenTypes {
     data: SecondScreen
 }
 
 const SectionBenefits: FC<SecondScreenTypes> = ({data}) => {
-    const { benefitsList, title } = data
+    const { benefitsList, benefitsSectionTitle } = data
 
     return (
         <section className={style.section_benefits} id="benefits">
             <div className="container">
-                <h1 className={style.main_title} dangerouslySetInnerHTML={{ __html: title }} />
+                <h1 className={style.main_title} dangerouslySetInnerHTML={{ __html: benefitsSectionTitle }} />
                 <div className={style.benefits}>
                     <ul className={style.list}>
 

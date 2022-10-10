@@ -1,9 +1,7 @@
 import { FC } from 'react'
 import style from './selected-car.module.scss'
 import Breadcrumbs from '../../../../shared/breadcrumbs/breadcrumbs'
-import MainButton from '../../../../shared/main-button/main-button'
 import ScrollDown from '../../../../shared/scroll-down/scroll-down'
-import MainTitle from '../../../../shared/main-title/main-title'
 import Link from 'next/link'
 
 interface SelectedCarItem {
@@ -41,10 +39,10 @@ const SelectedCar: FC<SelectedCarItem> = ({pageName, car, parentLink}) => {
 						</Link>
 					</div>
 					<div className={style.gallery}>
-						<div className={`${style.car} ${style.main}`} style={{backgroundImage: `url(${car.gallery.car1})`}}> </div>
+						<div className={`${style.car} ${style.main}`} style={{backgroundImage: `url(${car.car1})`}}> </div>
 						<div className={style.gallery_wrap}>
-							<div className={style.car} style={{backgroundImage: `url(${car.gallery.car2})`}}> </div>
-							<div className={style.car} style={{backgroundImage: `url(${car.gallery.car3})`}}> </div>
+							<div className={style.car} style={{backgroundImage: `url(${car.car2})`}}> </div>
+							<div className={style.car} style={{backgroundImage: `url(${car.car3})`}}> </div>
 						</div>
 					</div>
 					<p className={style.description}>
@@ -55,18 +53,18 @@ const SelectedCar: FC<SelectedCarItem> = ({pageName, car, parentLink}) => {
 							__html: `<span>Характеристики ${ car.title || 'автомобиля' }</span>`
 						}
 					}/>
-					<ul className={style.list} style={{listStyleImage: `url(${car.specifications.icon})`}}>
+					<ul className={style.list} style={{listStyleImage: `url(${car.specifications})`}}>
 						{
-							car.specifications.list.map((specification: any, idx: number) => {
-								return <li key={idx} className={style.item}>{specification}</li>
+							car.specificationsList.map((specification: any, idx: number) => {
+								return <li key={idx} className={style.item}>{ specification.specificationsItem }</li>
 							})
 						}
 					</ul>
-					<p className={style.description}>{car.specifications.text}</p>
-					<h2 className={style.title}><span>{ car.rent.title }</span></h2>
+					<p className={style.description}>{car.text}</p>
+					<h2 className={style.title}><span>{ car.rentTitle }</span></h2>
 					<ul className={style.rent_list}>
 						{
-							car.rent.service.map((rent: any) => {
+							car.rentstList.map((rent: any) => {
 								return <li key={rent.title} className={style.rent_item}>
 									<div className={style.name}>{ rent.title }</div>
 									<span> </span>

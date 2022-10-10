@@ -1,16 +1,16 @@
 import { useEffect, useState } from 'react'
 import style from './write-to-us.module.scss'
-import { DataTypes } from '../../../types/Data'
 import Link from 'next/link'
+import { url } from '../../../common/urlData'
+import { WriteUs } from '../../../types/write-us'
 
 const WriteToUs = () => {
-	const [data, setData] = useState<DataTypes>()
+	const [data, setData] = useState<WriteUs>()
 
 	const getData = async () => {
-		const res = await fetch(`https://premium-transfer33-469d.vercel.app/api/data`)
+		const res = await fetch(`${url}/wp-json/wp/v2/pages?_embed`)
 		const data = await res.json()
-		console.log(data)
-		setData(data)
+		setData(data[2].CFS)
 	}
 
 	useEffect(() => {
@@ -18,21 +18,19 @@ const WriteToUs = () => {
 	},[])
 
 	if (!data) return null
-	const { writeUs: { buttons, text, title } } = data
+	const { writeToUsButtonList, writeToUsText, writeToUsTitle } = data
 
 	return (<section className={style.section}>
 			<div className="container">
-				<div className={style.appeal_title}><span>{title}</span></div>
-				<div className={style.appeal_text}>{text}</div>
+				<div className={style.appeal_title}><span>{writeToUsTitle}</span></div>
+				<div className={style.appeal_text}>{writeToUsText}</div>
 				<div className={style.button_group}>
-					{buttons.map((item: {
-						link: string
-						text: string | undefined }) => {
+					{writeToUsButtonList.map((item) => {
 							return (
-								<div key={item.text} className={style.button_wrap}>
-									<Link href={item.link} >
+								<div key={item.writeToUsTextButton} className={style.button_wrap}>
+									<Link href={item.writeToUsLinkButton} >
 										<a className={style.button}>
-											{item.text}
+											{item.writeToUsTextButton}
 										</a>
 									</Link>
 								</div>

@@ -1,5 +1,5 @@
 export interface SecondScreen {
-	title: string
+	benefitsSectionTitle: string
 	benefitsList: BenefitsList[]
 }
 

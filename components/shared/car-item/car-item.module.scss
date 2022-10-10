@@ -32,6 +32,29 @@ $margin: 40px;
   width: calc((100% / 2) - (#{$margin} / 2));
   margin-bottom: $margin;
 
+  &.numbers {
+    width: calc((100% / 3) - (#{$margin} / 4));
+    margin-bottom: 0;
+
+    .img {
+      height: 220px;
+    }
+
+    .name {
+      font-size: 17px;
+    }
+
+    @include large {
+      margin-bottom: 40px;
+      width: 100%;
+    }
+
+    @include small {
+      width: 100%;
+      margin-bottom: 25px;
+    }
+  }
+
   @include large {
     width: calc((100% / 2) - (#{$margin} / 4));
     margin-bottom: $margin / 2;

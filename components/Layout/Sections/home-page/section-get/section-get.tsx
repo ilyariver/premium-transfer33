@@ -7,16 +7,16 @@ interface GetsTypes {
 }
 
 const SectionGet: FC<GetsTypes> = ({ data }) => {
-	const { title, textList } = data
+	const { whatTitle, whatList } = data
 
 	return (
 		<section className={style.section}>
 			<div className="container">
-				<h2 className={style.title}><span>{ title }</span></h2>
-				<ul className={style.list} style={{listStyleImage: `url(${textList.icon})`}}>
-					{textList.list.map((item) => (
-						<li className={style.item} key={item}>
-							<div className={style.text}>{ item }</div>
+				<h2 className={style.title}><span>{ whatTitle }</span></h2>
+				<ul className={style.list} >
+					{whatList.map((item) => (
+						<li className={style.item} key={item.whatItem}>
+							<div className={style.text}>{item.whatItem}</div>
 						</li>))
 					}
 				</ul>

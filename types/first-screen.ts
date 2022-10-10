@@ -1,5 +1,6 @@
 export interface FirstScreen {
 	backgroundImage: string
-	buttonText: string
+	buttonToFormText: string
+	linkToForm: string
 	hasScroll: boolean
 }

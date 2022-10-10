@@ -1,13 +1,8 @@
 export interface About {
-	title: string
-	description: string
-	director: {
-		name: string
-		about: string
-	}
-	mission: string
-	numberOrders: {
-		number?: number
-		text?: string
-	}
+	aboutPageTitle: string
+	aboutPageDescription: string
+	directorName: string
+	aboutDirector: string
+	companyMission: string
+	numberOrders: number
 }

@@ -5,13 +5,14 @@ export interface FooterData {
 	link: string
 	logo: Logo
 	navList: NavList[]
-	contactsList: contactsList[]
+	contactsList: ContactsList[]
 	copyright: string
 }
 
 
-export interface contactsList {
-	icon: string
-	name: string
-	link: string
+export interface ContactsList {
+	iconPageContact?: string
+	iconFooterContact: string
+	nameFooterContact: string
+	linkFooterContact: string
 }

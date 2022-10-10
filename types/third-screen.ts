@@ -1,6 +1,6 @@
 export interface ThirdScreen {
-	title: string
-	img: string
+	advantagesTitle: string
+	advantagesImg: string
 	advantagesList: AdvantagesList[]
 }
 

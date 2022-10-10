@@ -8,12 +8,12 @@ import CarItem from '../../components/shared/car-item/car-item'
 import { Cars } from '../../types/Cars'
 
 interface AutoparkTypes {
-	carsPark: Cars
+	cars: Cars
 }
 
-const Autopark: NextPageWithLayout<AutoparkTypes> = ({carsPark}) => {
-	const pageName: string = carsPark.title
-	const pageTitle: string = carsPark.pageTitle
+const Autopark: NextPageWithLayout<AutoparkTypes> = ({cars}) => {
+	const pageName: string = cars?.title
+	const pageTitle: string = cars?.pageTitle
 	const route = useRouter()
 	let pages: string[] = []
 
@@ -22,7 +22,7 @@ const Autopark: NextPageWithLayout<AutoparkTypes> = ({carsPark}) => {
 	return (
 		<RootSection pageTitle={pageTitle} pages={pages}>
 			<div className="container">
-				<CarItem cars={carsPark} rootPath={route.pathname} />
+				<CarItem cars={cars} rootPath={route.pathname} />
 			</div>
 		</RootSection>
 	)
@@ -40,16 +40,25 @@ Autopark.getLayout = function getLayout(page: ReactElement) {
 export default Autopark
 
 export async function getServerSideProps() {
-	const res = await fetch(`${process.env.API_HOST}/data`)
-	const carsPark = await res.json()
-	if (!carsPark) {
+	const res = await fetch(`${process.env.API_HOST}/wp-json/wp/v2/pages?_embed`)
+	const fullData = await res.json()
+	if (!fullData) {
 		return {
 			notFound: true
 		}
 	}
+
+	const dataMain = fullData[2].CFS
+
 	return {
 		props: {
-			carsPark: carsPark.cars,
-		},
+			cars: {
+				title: dataMain.title,
+				parentPage: dataMain.parentPage,
+				pageTitle: dataMain.pageTitle,
+				sectionTitle: dataMain.sectionTitle,
+				park: dataMain.parkList,
+			},
+		}
 	}
 }

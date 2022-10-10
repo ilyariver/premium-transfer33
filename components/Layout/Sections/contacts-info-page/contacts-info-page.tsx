@@ -1,15 +1,15 @@
 import { FC } from 'react'
-import { Address, Contacts } from '../../../../types/contacts'
+import { Address, Location } from '../../../../types/contacts'
 import style from './contacts-info-page.module.scss'
 import Link from 'next/link'
 
 
 interface ContactsTypes {
-	contacts: Contacts[]
-	address: Address
+	contacts: Address[]
+	location: Location
 }
 
-const ContactsInfoPage: FC<ContactsTypes> = ({ contacts, address }) => {
+const ContactsInfoPage: FC<ContactsTypes> = ({ contacts, location }) => {
 	if (!contacts) return null
 
 	return (
@@ -20,19 +20,19 @@ const ContactsInfoPage: FC<ContactsTypes> = ({ contacts, address }) => {
 						{
 							contacts.map((contact) => {
 								return (
-									<li key={contact.id} className={style.list_item}>
-										<Link href={contact.phone.link}>
+									<li key={contact.nameFooterContact} className={style.list_item}>
+										<Link href={contact.linkFooterContact}>
 											<a className={style.item}>
 												<div className={style.title_content}>
 													<div
 														className={style.icon}
-														aria-label={'иконка ' + contact.type}
-														style={{backgroundImage: `url(${contact.icon})`}}
+														aria-label={'иконка ' + contact.nameFooterContact}
+														style={{backgroundImage: `url(${contact.iconPageContact})`}}
 													>
 													</div>
-													<div className={style.type}>{contact.type}</div>
+													<div className={style.type}>{ contact.namePageContact }</div>
 												</div>
-												<div className={style.text}>{contact.phone.tel}</div>
+												<div className={style.text} dangerouslySetInnerHTML={{ __html: contact.nameFooterContact }} />
 											</a>
 										</Link>
 									</li>
@@ -45,8 +45,8 @@ const ContactsInfoPage: FC<ContactsTypes> = ({ contacts, address }) => {
 				<div className={style.wrap}>
 					<div className={style.address_content}>
 						<div className={style.address_icon}
-							 style={{backgroundImage: `url(${address.icon})`}}> </div>
-						<div className={style.address_text}>{address.text}</div>
+							 style={{backgroundImage: `url(${location.iconPageLocation})`}}> </div>
+						<div className={style.address_text} dangerouslySetInnerHTML={{ __html: location.nameFooterLocation }} />
 					</div>
 				</div>
 			</div>

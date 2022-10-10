@@ -13,11 +13,11 @@ import WriteToUs from '../components/shared/write-to-us/write-to-us'
 const Home: NextPageWithLayout<any> = ({data}) => {
 
     const {
-        header,
+        logo,
         cars,
         firstScreen,
         secondScreen,
-        thirdScreen,
+        fourthScreen,
         formScreen,
         whatGetScreen,
     } = data
@@ -25,10 +25,10 @@ const Home: NextPageWithLayout<any> = ({data}) => {
 
     return (
         <>
-            <SectionMain data={firstScreen} logo={header.logo} />
+            <SectionMain data={firstScreen} logo={logo} />
             <SectionBenefits data={secondScreen} />
             <SectionAutoPark cars={cars}/>
-            <SectionListAdvantages data={thirdScreen} />
+            <SectionListAdvantages data={fourthScreen} />
             <SectionForm data={formScreen}/>
             <SectionGet data={whatGetScreen} />
         </>
@@ -47,17 +47,56 @@ Home.getLayout = function getLayout(page: ReactElement) {
 export default Home
 
 export async function getServerSideProps() {
-    const res = await fetch(`${process.env.API_HOST}/data`)
+    const res = await fetch(`${process.env.API_HOST}/wp-json/wp/v2/pages?_embed`)
     const fullData = await res.json()
     if (!fullData) {
         return {
             notFound: true
         }
     }
+    const dataCFS = fullData[2].CFS
 
     return {
         props: {
-           data: fullData
+           data: {
+               logo: dataCFS.logo_img,
+               firstScreen: {
+                   backgroundImage: dataCFS.backgroundImage,
+                   buttonToFormText: dataCFS.buttonToFormText,
+                   linkToForm: dataCFS.linkToForm,
+                   hasScroll: dataCFS.hasScroll,
+               },
+               secondScreen: {
+                   benefitsSectionTitle: dataCFS.benefitsSectionTitle,
+                   benefitsList: dataCFS.benefitsList
+               },
+               cars: {
+                   title: dataCFS.title,
+                   parentPage: dataCFS.parentPage,
+                   pageTitle: dataCFS.pageTitle,
+                   sectionTitle: dataCFS.sectionTitle,
+                   park: dataCFS.parkList,
+               },
+               fourthScreen: {
+                   advantagesTitle: dataCFS.advantagesTitle,
+                   advantagesImg: dataCFS.advantagesImg,
+                   advantagesList: dataCFS.advantagesList,
+               },
+               formScreen: {
+                   titleForm: dataCFS.titleForm,
+                   textForm: dataCFS.textForm,
+                   imgBackForm: dataCFS.imgBackForm,
+                   nameInput: dataCFS.nameInput,
+                   telInput: dataCFS.telInput,
+                   textAreaInput: dataCFS.textAreaInput,
+                   formButton: dataCFS.formButton,
+
+               },
+               whatGetScreen: {
+                   whatTitle: dataCFS.whatTitle,
+                   whatList: dataCFS.whatList,
+               },
+           }
         }
     }
 }

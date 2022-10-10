@@ -5,15 +5,15 @@ import Head from 'next/head'
 import Header from '../../Layout/Header/Header'
 import Footer from '../../Layout/Footer/Footer'
 import { DataTypes } from '../../../types/Data'
+import { url } from '../../../common/urlData'
 
 const MainLayout: FC<LayoutTypes> = ({children, title}) => {
-	const [data, setData] = useState<DataTypes>()
+	const [data, setData] = useState()
 
-	const getData = async () => {
-		const res = await fetch(`https://premium-transfer33-469d.vercel.app/api/data`)
-		const data = await res.json()
-		console.log(data)
-		setData(data)
+	const getData = async  () => {
+		const response = await fetch(`${url}/wp-json/wp/v2/pages?_embed`)
+		const data = await response.json()
+		setData(data[2].CFS)
 	}
 
 	useEffect(() => {
@@ -23,13 +23,13 @@ const MainLayout: FC<LayoutTypes> = ({children, title}) => {
 	return (
 		<>
 			<Head>
-				<title key="title">{`${title} ${data?.title ? data?.title : '|PT33'}`}</title>
+				<title key="title">{`${title} | PREMIUM TRANSFER33`}</title>
 			</Head>
-			<Header activePage={title} data={data?.header} />
+			<Header activePage={title} data={data} />
 			<main style={{overflow: 'hidden'}} className={style.main}>
 				{ children }
 			</main>
-			<Footer data={data?.footer} />
+			<Footer data={data} />
 		</>
 	)
 }
