@@ -1,1 +1,1 @@
-export const url: string = 'http://bucks2gj.beget.tech'
+export const url: string = 'https://premiumtransfer33.ru'
