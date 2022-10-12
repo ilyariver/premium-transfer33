@@ -5,6 +5,7 @@ const nextConfig = {
   images: {
     domains: ['premiumtransfer33.ru'],
   },
+  output: 'standalone',
 }
 
 module.exports = nextConfig
