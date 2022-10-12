@@ -202,3 +202,76 @@
     }
   }
 }
+
+.toast_container {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  width: 270px;
+  z-index: 50;
+
+  @include tablets {
+    top: 100px;
+  }
+}
+
+.toast {
+  position: relative;
+  background-color: $color-success-toast;
+  background-clip: padding-box;
+  color: #fff;
+  font-size: 14px;
+  border: 1px solid #0c2f1f82;
+  box-shadow: 0 0.125rem 0.25rem #19875424;
+  overflow: hidden;
+  font-family: NotoSans, sans-serif;
+  font-weight: 500;
+  border-radius: 5px;
+
+  &:not(:last-child) {
+    margin-bottom: 0.75rem;
+  }
+
+  &__header {
+    position: relative;
+    padding: 0.5rem 2.25rem 0.5rem 1rem;
+    background-color: #00000008;
+    border-bottom: 1px solid #0000000d;
+  }
+
+  &__body {
+    padding: 1rem;
+    font-weight: 300;
+  }
+
+  &__close {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    width: 15px;
+    height: 15px;
+
+    &:after {
+      content: "✖";
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: 0;
+      right: 0;
+      border: 0;
+      width: 15px;
+      height: 15px;
+      opacity: .5;
+      color: white;
+      cursor: pointer;
+      transition: opacity .1s ease-in-out;
+    }
+
+    &:hover:after {
+      opacity: 1;
+    }
+  }
+}
+
+

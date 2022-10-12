@@ -1,8 +1,9 @@
 import style from './section-form.module.scss'
 import MainButton from '../../../../shared/main-button/main-button'
 import { FormTypes } from '../../../../../types/form'
-import { FC, FormEvent, useState } from 'react'
+import { FC, FormEvent, useEffect, useState } from 'react'
 import Input from 'react-phone-number-input/input'
+import axios from 'axios'
 
 interface SectionFormTypes {
 	data: FormTypes
@@ -10,11 +11,24 @@ interface SectionFormTypes {
 
 const SectionForm: FC<SectionFormTypes> = ({ data }) => {
 	const ruCode: string = '+7'
+	const [toast, setToast] = useState<boolean>(false)
 	const [activeNameLabel, setActiveNameLabel] = useState<boolean>(false)
 	const [activeMessageLabel, setActiveMessageLabel] = useState<boolean>(false)
 	const [name, setName] = useState<string>('')
 	const [phone, setPhone] = useState<string>(ruCode)
 	const [message, setMessage] = useState<string>('')
+
+	useEffect(() => {
+		const timeoutToast = setTimeout(() => setToast(false), 10_000)
+
+		return () => {
+			clearTimeout(timeoutToast)
+		}
+	}, [toast])
+
+	useEffect(() => {
+
+	}, [])
 
 	if (!data) return null
 
@@ -28,6 +42,28 @@ const SectionForm: FC<SectionFormTypes> = ({ data }) => {
 		formButton
 	} = data
 
+	function sendMessageToTelegram(data:any) {
+		const TOKEN = '5606052460:AAHNgToUBAqm8_ZgfwreIqCPBO9O7RIHzno'
+		const CHAT_ID = '-1001802745454'
+		const URI_API = `https://api.telegram.org/bot${TOKEN}/sendMessage`
+
+		let message = `<strong>Заявка с сайта!</strong>\n`
+		message += `<b>Отправитель: </b> <i>${data.name}</i>\n`
+		message += `<b>Номер телефона: </b><i>${data.phone}</i>\n`
+		message += `<b>Примечание: </b><i>${data.message}</i>`
+
+		axios.post(URI_API, {
+			chat_id: CHAT_ID,
+			parse_mode: 'html',
+			text: message
+		})
+			.then(res => {
+				setToast(true)
+			})
+			.catch(error => {
+				console.error(error.message)
+			})
+	}
 
 	function handleSubmit(event: FormEvent<HTMLFormElement>) {
 		event.preventDefault()
@@ -41,7 +77,7 @@ const SectionForm: FC<SectionFormTypes> = ({ data }) => {
 		setPhone(ruCode)
 		setMessage('')
 
-		console.log(data)
+		sendMessageToTelegram(data)
 	}
 
 	return (
@@ -118,6 +154,15 @@ const SectionForm: FC<SectionFormTypes> = ({ data }) => {
 						</form>
 					</div>
 				</div>
+				{
+					toast && <div className={style.toast_container}>
+						<div className={style.toast}>
+							<div className={style.toast__header}>Спасибо!</div>
+							<div className={style.toast__body}>Заявка успешно отправлена...</div>
+							<div className={style.toast__close} onClick={() => setToast(false)}/>
+						</div>
+					</div>
+				}
 			</section>
 			<style jsx>
 				{`
