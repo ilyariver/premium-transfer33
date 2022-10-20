@@ -4,6 +4,7 @@ import { Address, ContactsPage, Location } from '../types/contacts'
 import MainLayout from '../components/shared/main-layout/main-layout'
 import ContactsInfoPage from '../components/Layout/Sections/contacts-info-page/contacts-info-page'
 import RootSection from '../components/shared/root-section/root-section'
+import { url } from '../common/urlData'
 
 interface ContactsTypes {
 	contactsPage: ContactsPage
@@ -31,7 +32,7 @@ Contacts.getLayout = function getLayout(page: ReactElement) {
 export default Contacts
 
 export async function getServerSideProps() {
-	const res = await fetch(`${process.env.API_HOST}/wp-json/wp/v2/pages?_embed`)
+	const res = await fetch(`${url}/wp-json/wp/v2/pages?_embed`)
 	const fullData = await res.json()
 	if (!fullData) {
 		return {

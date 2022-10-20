@@ -8,6 +8,7 @@ import SectionListAdvantages from '../components/Layout/Sections/home-page/secti
 import SectionForm from '../components/Layout/Sections/home-page/section-form/section-form'
 import SectionGet from '../components/Layout/Sections/home-page/section-get/section-get'
 import WriteToUs from '../components/shared/write-to-us/write-to-us'
+import { url } from '../common/urlData'
 
 
 const Home: NextPageWithLayout<any> = ({data}) => {
@@ -47,7 +48,7 @@ Home.getLayout = function getLayout(page: ReactElement) {
 export default Home
 
 export async function getServerSideProps() {
-    const res = await fetch(`${process.env.API_HOST}/wp-json/wp/v2/pages?_embed`)
+    const res = await fetch(`${url}/wp-json/wp/v2/pages?_embed`)
     const fullData = await res.json()
     if (!fullData) {
         return {

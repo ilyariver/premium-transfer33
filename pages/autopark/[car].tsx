@@ -6,6 +6,7 @@ import { useRouter } from 'next/router'
 import MainLayout from '../../components/shared/main-layout/main-layout'
 import SelectedCar from '../../components/Layout/Sections/autopark-page/selected-car/selected-car'
 import WriteToUs from '../../components/shared/write-to-us/write-to-us'
+import { url } from '../../common/urlData'
 
 interface CarTypes {
 	cars: Cars
@@ -36,7 +37,7 @@ export default Catalog;
 
 
 export const getServerSideProps: GetServerSideProps = async () => {
-	const res = await fetch(`${process.env.API_HOST}/wp-json/wp/v2/pages?_embed`)
+	const res = await fetch(`${url}/wp-json/wp/v2/pages?_embed`)
 	const fullData = await res.json()
 	if (!fullData) {
 		return {
