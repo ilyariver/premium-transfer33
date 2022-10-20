@@ -156,7 +156,7 @@
     justify-content: center;
     height: 100%;
     padding: 10px 50px 15px;
-    width: 220px;
+    min-width: 220px;
     @include center;
     background: $color-yellow;
     color: #ccc;
@@ -217,13 +217,13 @@
         }
 
         &:before {
-            transform: translateX(300px)  skewX(-15deg);
+            transform: translateX(400px)  skewX(-15deg);
             opacity: 0.6;
             transition: .7s;
         }
 
         &:after {
-            transform: translateX(300px) skewX(-15deg);
+            transform: translateX(400px) skewX(-15deg);
             opacity: 1;
             transition: .7s;
         }

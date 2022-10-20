@@ -152,8 +152,28 @@
   color: $color-white;
   font-family: 'Noto Sans', sans-serif;
 
+  &.error_input {
+    border: 1px solid $color-error;
+    color: $color-error;
+    outline: $color-error;
+  }
+
   @include tablets {
     height: 45px;
+  }
+}
+
+.error {
+  position: absolute;
+  right: 5px;
+  bottom: 0;
+  font-family: 'NotoSans', sans-serif;
+  font-weight: 300;
+  font-size: 13px;
+  color: $color-error;
+
+  @include tablets {
+    font-size: 10px;
   }
 }
 

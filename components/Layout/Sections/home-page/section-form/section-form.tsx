@@ -17,6 +17,7 @@ const SectionForm: FC<SectionFormTypes> = ({ data }) => {
 	const [name, setName] = useState<string>('')
 	const [phone, setPhone] = useState<string>(ruCode)
 	const [message, setMessage] = useState<string>('')
+	const [phoneValidate, setPhoneValidate] = useState<boolean>(false)
 
 	useEffect(() => {
 		const timeoutToast = setTimeout(() => setToast(false), 10_000)
@@ -73,11 +74,16 @@ const SectionForm: FC<SectionFormTypes> = ({ data }) => {
 			phone,
 			message
 		}
-		setName('')
-		setPhone(ruCode)
-		setMessage('')
 
-		sendMessageToTelegram(data)
+		if (data.phone.length < 12) {
+			setPhoneValidate(true)
+		} else {
+			setPhoneValidate(false)
+			sendMessageToTelegram(data)
+			setName('')
+			setPhone(ruCode)
+			setMessage('')
+		}
 	}
 
 	return (
@@ -120,7 +126,7 @@ const SectionForm: FC<SectionFormTypes> = ({ data }) => {
 								</label>
 								<Input
 									id={ telInput }
-									className={style.input}
+									className={`${style.input} ${phoneValidate ? style.error_input : ''}`}
 									minLength="16"
 									maxLength="16"
 									required
@@ -130,8 +136,10 @@ const SectionForm: FC<SectionFormTypes> = ({ data }) => {
 									value={phone}
 									onChange={(value: string) => {
 										setPhone(value);
+										setPhoneValidate(false)
 									}}
 								/>
+								{phoneValidate && <div className={style.error}>Кажется здесь не хватает цифр телефона</div>}
 							</div>
 							<div className={style.item_textarea}>
 								<label
