@@ -23,7 +23,6 @@ const Home: NextPageWithLayout<any> = ({data}) => {
         whatGetScreen,
     } = data
 
-
     return (
         <>
             <SectionMain data={firstScreen} logo={logo} />

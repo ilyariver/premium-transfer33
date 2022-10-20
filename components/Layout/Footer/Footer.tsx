@@ -1,6 +1,7 @@
 import { FC } from 'react'
 import style from './Footer.module.scss'
 import Link from 'next/link'
+import { url } from '../../../common/urlData'
 
 interface FooterTypes {
 	data?: any
@@ -95,6 +96,13 @@ const Footer: FC<FooterTypes> = ({data}) => {
 						</div>
 					</div>
 				</div>
+			</div>
+			<div className={style.admin}>
+				<Link href={url + '/wp-admin'}>
+					<a target="_blank">
+						<div className={style.admin_edit} title="Admin" />
+					</a>
+				</Link>
 			</div>
 		</footer>
 	)

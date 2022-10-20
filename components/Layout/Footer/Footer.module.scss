@@ -3,6 +3,7 @@
 @import '../../../styles/scss/shared/helper';
 
 .footer {
+  position: relative;
   padding: 115px;
   border-top: 1px solid rgba(255, 255, 255, 0.3);
   font-family: NotoSans, sans-serif;
@@ -224,6 +225,27 @@
     @include tablets {
       transform: scale(1);
       box-shadow: none;
+    }
+  }
+}
+
+.admin {
+  position: absolute;
+  bottom: 50px;
+  right: 50px;
+
+  &_edit {
+    background-color: #0F0E10;
+    @include backgroundImg('icons/edit.svg', 40%);
+    background-position: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    opacity: 0.5;
+    transition: opacity 0.1s ease;
+
+    &:hover {
+      opacity: 1;
     }
   }
 }
