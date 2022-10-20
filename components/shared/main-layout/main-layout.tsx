@@ -25,15 +25,15 @@ const MainLayout: FC<LayoutTypes> = ({children, title}) => {
 	return (
 		<>
 			<Head>
-				<meta content="image/jpg" property="og:image:type" />
 				<meta name="description" content="Компания Premium Transfer 33 предоставляет трансферные услуги на машинах бизнес-класса" />
 				<meta name="keywords" content="трансфер, премиум трансфер 33, трансфер во Владимире, премиум автомобили во Владимире" />
 				<meta property="og:title" content="Заказ трансфера автомобилей премиум-класса во Владимире с Premium Transfer33" />
 				<meta property="og:description" content="Компания Premium Transfer 33 предоставляет трансферные услуги на машинах бизнес-класса" />
 				<meta property="og:url" content= "https://premiumtransfer33.ru"/>
 				<meta property="og:site_name" content="Сайт заказа трансфера автомобилей премиум-класса во Владимире"/>
-				{sharingImg && <meta content={sharingImg || ''} name="msapplication-TileImage"/> }
-				{sharingImg && <meta property="og:image" content={sharingImg || ''} /> }
+				<meta content="/images/share.jpg" name="msapplication-TileImage" />
+				<meta property="og:image" content="/images/share.jpg" />
+				<meta content="image/jpg" property="og:image:type" />
 				<meta property="og:image:width" content="1200"/>
 				<meta property="og:image:height" content="630"/>
 				<title key="title">{`${title} | PREMIUM TRANSFER33`}</title>
