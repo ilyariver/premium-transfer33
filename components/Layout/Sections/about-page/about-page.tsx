@@ -9,6 +9,10 @@ const AboutPage: FC<About> = ({
   	companyMission,
 	numberOrders}) => {
 
+	function numberWithSpaces(x: number) {
+		return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+	}
+
 	return (
 		<div className="container">
 			<div className={style.description} dangerouslySetInnerHTML={{ __html: aboutPageDescription }} />
@@ -19,7 +23,7 @@ const AboutPage: FC<About> = ({
 			<div className={style.mission_wrap}>
 				<div className={style.mission} dangerouslySetInnerHTML={{ __html: companyMission }} />
 				<div className={style.number_orders}>
-					<div className={style.number}>{numberOrders}</div>
+					<div className={style.number}>{numberWithSpaces(numberOrders)}</div>
 					<div className={style.orders_text}>выполненных<br />заказов</div>
 				</div>
 			</div>

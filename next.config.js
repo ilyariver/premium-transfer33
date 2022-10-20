@@ -3,7 +3,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ['premiumtransfer33.ru'],
+    domains: ['nivifuri.beget.app'],
   },
 }
 
