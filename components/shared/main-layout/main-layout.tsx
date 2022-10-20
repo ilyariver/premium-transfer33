@@ -35,7 +35,7 @@ const MainLayout: FC<LayoutTypes> = ({children, title}) => {
 				<meta property="og:image" content="/images/share.jpg" />
 				<meta content="image/jpg" property="og:image:type" />
 				<meta property="og:image:width" content="300"/>
-				<meta property="og:image:height" content="630"/>
+				<meta property="og:image:height" content="300"/>
 				<title key="title">{`${title} | PREMIUM TRANSFER33`}</title>
 			</Head>
 			<Header activePage={title} data={data} />
