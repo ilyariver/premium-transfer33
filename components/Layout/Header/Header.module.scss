@@ -246,6 +246,9 @@
     color: $color-background;
     transition: all 0.2s ease-out;
     white-space: nowrap;
+    text-transform: uppercase;
+    font-family: PlayfairDisplay, serif;
+    font-size: 13px;
 }
 
 .header_contacts_wrap {

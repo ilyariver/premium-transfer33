@@ -24,6 +24,8 @@
   text-transform: uppercase;
   font-size: 32px;
 
+  font-family: PlayfairDisplay, serif;
+
   @include large {
     margin-bottom: 40px;
     font-size: 25px;

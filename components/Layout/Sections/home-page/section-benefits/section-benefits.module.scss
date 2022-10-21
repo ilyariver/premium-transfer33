@@ -35,6 +35,7 @@
 .main_title {
   margin-bottom: 50px;
   font-size: 42px;
+  font-family: PlayfairDisplay, serif;
   text-align: center;
 
   @include large {
@@ -177,6 +178,7 @@
   color: #272627;
   font-weight: 700;
   font-size: 450px;
+  font-family: PlayfairDisplay, serif;
 
   &_right {
     bottom: -170px;

@@ -131,6 +131,7 @@
   color: $color-background;
   border-radius: 5px;
   text-transform: uppercase;
+  font-family: PlayfairDisplay, serif;
   transition: background-color 0.15s ease;
 
   @include large {
@@ -347,6 +348,7 @@
 
 .name {
   white-space: nowrap;
+  font-family: PlayfairDisplay, serif;
 }
 
 .cost {
